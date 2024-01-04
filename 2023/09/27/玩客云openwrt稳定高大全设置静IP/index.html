@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>玩客云openwrt稳定高大全设置静IP | 保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/27/%E7%8E%A9%E5%AE%A2%E4%BA%91openwrt%E7%A8%B3%E5%AE%9A%E9%AB%98%E5%A4%A7%E5%85%A8%E8%AE%BE%E7%BD%AE%E9%9D%99IP/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="LI BAO">
+       <meta itemprop="description" content="免费博客不定时更新！！！！！">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">玩客云openwrt稳定高大全设置静IP</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-27T10:00:00+08:00">2023年09月27日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>##首先下载刷机包<br><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1p-zCPYOs7OuM_-BV29N0tw?pwd=qqbk">百度网盘下载地址</a><br>提取码：qqbk</p>
+<p>##再下载刷机软件<br><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Mwct4aoXwThZ0gWX-gROMg?pwd=2yly">百度网盘下载地址</a><br>提取码：2yly</p>
+<p>##刷机过程不演示，自已百度查找方法</p>
+<p>#玩客云高大全直刷，全分区去校验，，登陆帐号：root 密码为：root，主路由ip10.0.0.1需网线直连电脑配置旁路由IP，用自带的一键设置就行，<br>建议:刷主路由固件，直连电脑重新在管理页面配置旁路由</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--------------------------------------------</span><br><span class="line">首先登陆10.0.0.1路由器后台，找到网口-LAN口设置，先改成DHCP客户端，让IP自动获取，然后保存并重启路由器。再把线插在主路由上，我的路由是192.168.3.1,登陆主路由看新进入的玩客云路由器IP,例如我的是192.168.3.34</span><br><span class="line">记陆好IP后，用SSH链接上，不懂怎样用SSH的可以查度查，最好用第三方软件，如果不想安装软件可以在电脑文件浏览器输入CMD回车</span><br><span class="line">然后软件</span><br></pre></td></tr></table></figure>
+<p>ssh <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#x40;&#x31;&#x39;&#50;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#51;&#x2e;&#51;&#x34;">&#x72;&#111;&#x6f;&#x74;&#x40;&#x31;&#x39;&#50;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#51;&#x2e;&#51;&#x34;</a></p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 回车,提示输入yes再回车，然后提示输入(password)密码输入 root再回车</span><br><span class="line"> -----------------------------------------------------------------------</span><br><span class="line">                OpenWrt 08.24.2023 by keai</span><br><span class="line">         _________________________________________</span><br><span class="line"></span><br><span class="line">系统负载:  0.29 0.25 0.22       运行时间:  33 min</span><br><span class="line">内存已用:  23 % of 747MB        IP  地址:  192.168.3.34</span><br><span class="line">系统存储:  13% of 6.7G          CPU 信息: ARMv7 Processor rev 1</span><br><span class="line"></span><br><span class="line">[root@OpenWrt:04:54 PM ~] #</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">出现上面界面就是登陆成功了！</span><br><span class="line">首先先修改网卡地址</span><br></pre></td></tr></table></figure>
+<p> vim &#x2F;etc&#x2F;config&#x2F;network</p>
+<pre><code>这时你会看到出现
+config interface &#39;loopback&#39;
+       option device &#39;lo&#39;
+       option proto &#39;static&#39;
+       option ipaddr &#39;127.0.0.1&#39;
+       option netmask &#39;255.0.0.0&#39;
+
+config globals &#39;globals&#39;
+       option ula_prefix &#39;fd6b:6253:662c::/48&#39;
+       option packet_steering &#39;1&#39;
+
+config device
+       option name &#39;br-lan&#39;
+       option type &#39;bridge&#39;
+       list ports &#39;eth0&#39;
+
+config interface &#39;lan&#39;
+       option device &#39;br-lan&#39;
+       option proto &#39;dhcp&#39;
+
+config interface &#39;vpn0&#39;
+       option device &#39;tun0&#39;
+       option proto &#39;none&#39;
+
+config interface &#39;ipsec_server&#39;
+       option device &#39;ipsec0&#39;
+       option proto &#39;static&#39;
+       option ipaddr &#39;192.168.100.1&#39;
+-----------------------------------------
+按英文字母i可以进入修改模式，用第三方软件例如：FinalShell 可以复制粘贴的,我的修改就是把MAC地址固定于1A:AA:A5:61:7B:7D，其它没什么改动的
+改完后按键盘Esc键 ，再按Shift加：号键，再你w-q回车，退出并保存
+
+       我的修改成这下面这样
+       config interface &#39;loopback&#39;
+       option proto &#39;static&#39;
+       option ipaddr &#39;127.0.0.1&#39;
+       option netmask &#39;255.0.0.0&#39;
+       option device &#39;lo&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config globals &#39;globals&#39;
+       option ula_prefix &#39;fd7b:ad35:5cfd::/48&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config interface &#39;lan&#39;
+       option proto &#39;dhcp&#39;
+       option device &#39;br-lan&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config interface &#39;docker&#39;
+       option device &#39;docker0&#39;
+       option proto &#39;none&#39;
+       option auto &#39;0&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config device
+       option type &#39;bridge&#39;
+       option name &#39;docker0&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+       
+       然后重启网络
+```		
+/etc/init.d/network restart
+```			
+这时登陆路由器看MAc：1A:AA:A5:61:7B:7D的设备就上线了，你这个对应路由器的IP地址也会永远固定这个，如果你想改变IP地址，就在主路由上设置，一般路由器都是找到网络设置，静态 IP 地址绑定列表，找到1A:AA:A5:61:7B:7D这个对应的名称，绑定就可以，因为这个玩客云路由器不能用静态功能，我试过，每次用静态功能就上不了网，例如科学上网等等！！！
+</code></pre>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2023/09/25/OpenWrt%E8%BD%AF%E8%B7%AF%E7%94%B1%E4%BC%98%E9%80%89IP/" rel="next" title="OpenWrt软路由优选IP"><i class="fas fa-angle-left"></i><span class="nav-title">OpenWrt软路由优选IP</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2023/10/15/%E5%9B%BA%E5%AE%9A%E8%B7%AF%E5%BE%84%E8%B7%B3%E8%BD%AC%E5%88%B0%E6%8C%87%E5%AE%9A%E7%BD%91%E9%A1%B5/" rel="prev" title="固定路径跳转到指定网页或链接"><span class="nav-title">固定路径跳转到指定网页或链接</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

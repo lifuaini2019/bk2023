@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>win系统电脑py生成EXE软件过程记录 | 保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/win%E7%B3%BB%E7%BB%9F%E7%94%B5%E8%84%91py%E7%94%9F%E6%88%90EXE%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="LI BAO">
+       <meta itemprop="description" content="免费博客不定时更新！！！！！">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">win系统电脑py生成EXE软件过程记录</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>电脑上面任意文件夹窗口输入</p>
+<p>cmd</p>
+<p>即可弹出对应的命令窗口</p>
+<p>方法1：使用 dir 命令</p>
+<p>打开命令提示符（Command Prompt），然后使用 cd 命令切换到包含要查看文件的文件夹。然后，输入以下命令：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure>
+<p>如果你想列出所有文件，包括隐藏文件，可以使用以下命令：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir /a</span><br></pre></td></tr></table></figure>
+<p>方法2：使用 tree 命令</p>
+<p>tree 命令可以以树状结构显示文件和文件夹。打开命令提示符，然后使用 cd 命令切换到要查看的文件夹，然后输入以下命令：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree</span><br></pre></td></tr></table></figure>
+<p>以上这将以树状结构显示文件和子文件夹。</p>
+<p>将命令的输出保存到文件中，如下所示：<br>这将把文件和文件夹列表保存到名为 “文件列表.txt” 的文本在当前文件中。</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir &gt; 文件列表.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果你想一次性列出这些文件夹下面的所有内容，你可以使用 tree 命令。打开命令提示符，并确保你在要查看的文件夹的根目录下执行以下命令：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree /f</span><br></pre></td></tr></table></figure>
+<p>这将递归列出指定文件夹下的所有文件和文件夹，包括子文件夹中的内容，并以树状结构显示在命令提示符中。<br>如果你希望将结果保存到一个文本文件中，可以使用以下命令：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree /f &gt; 文件列表.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果你只想列出文件夹下所有的 .jpg 文件，你可以使用 dir 命令，并结合通配符 *.jpg 来实现。在命令提示符中，进入你要查看的文件夹，并运行以下命令：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir /b /s *.jpg</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会在当前目录及其子文件夹中查找所有的 .jpg 文件，并将它们的文件名列出来。如果你想将结果保存到一个文本文件中，可以使用以下命令：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir /b /s *.jpg &gt; jpg文件列表.txt</span><br></pre></td></tr></table></figure>
+<p>这将把所有 .jpg 文件的文件名保存到名为 “jpg文件列表.txt” 的文本文件中。</p>
+<hr>
+<p>##Python Flask框架创建的简单网络应用程序</p>
+<p>#步骤 1：安装 Flask<br>使用以下命令安装Flask框架：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install flask</span><br></pre></td></tr></table></figure>
+<p>#步骤 2  要将Python代码转换为可执行的EXE应用文件，您可以使用第三方工具，如PyInstaller、cx_Freeze或Py2exe。在下面的示例中，安装了PyInstaller。您可以使用pip来安装它：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyinstaller</span><br></pre></td></tr></table></figure>
+<p>在命令行中，使用以下命令生成PyInstaller spec文件。将以下代码保存为shell_app.spec文件：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller --name shell_app --onefile your_script.py</span><br></pre></td></tr></table></figure>
+<p>将 your_script.py 替换为包含您的Python代码的文件名。例如app.py<br>就是这样pyinstaller –name shell_app –onefile app.py</p>
+<p>自定义spec文件（可选）</p>
+<p>您可以编辑生成的shell_app.spec文件以自定义应用程序的行为和外观。这包括添加图标、更改输出目录等。在编辑完spec文件后，继续下一步。</p>
+<p>步骤 3：生成可执行文件</p>
+<p>在命令行中，使用以下命令来生成可执行文件：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller shell_app.spec</span><br></pre></td></tr></table></figure>
+
+<p>这将生成一个dist目录，其中包含一个可执行的EXE文件，该文件名是您在spec文件中指定的名称。</p>
+<p>运行可执行文件</p>
+<p>找到生成的可执行文件（通常位于dist目录中），然后在任何计算机上运行它。这将打开您之前创建的GUI应用程序，允许用户列出和执行指定的可执行文件。</p>
+<p>请注意，生成的EXE文件可能会比原始Python脚本大一些，因为它包含了Python解释器和所有依赖项。</p>
+<p>这样，您就可以将Python代码转换为可执行的EXE应用程序，以便在Windows系统上运行，而无需安装Python或任何其他依赖项。<br>·—————————-·<br>备注过程忘了<br>以上操作一般会有app.py文件如果没有可以手动建一个<br>创建项目文件夹和文件<br>创建一个新的文件夹，用于存放您的项目文件。在该文件夹中，创建一个名为 app.py 的Python文件，用于编写应用程序代码。也可以手动在当前目录新建一个文件，例如名为 app.py </p>
+<p>编写应用程序代码<br>打开 app.py 文件，然后将以下代码粘贴到文件中：下面是一个简的示例</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import ttk</span><br><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line"># 可执行文件的路径</span><br><span class="line">executable1_path = r&#x27;D:\微云同步\刷机软件\普通版\广东省\广东--广州\广东--广州.exe&#x27;</span><br><span class="line">executable2_path = r&#x27;D:\微云同步\刷机软件\普通版\广东省\广东--广州--电动车\广东--广州--电动车.exe&#x27;</span><br><span class="line"></span><br><span class="line"># 创建主窗口</span><br><span class="line">root = tk.Tk()</span><br><span class="line">root.title(&quot;局域网壳软件&quot;)</span><br><span class="line"></span><br><span class="line"># 列出可执行文件的函数</span><br><span class="line">def list_executables():</span><br><span class="line">    executable1_label.config(text=&quot;1. &quot; + executable1_path)</span><br><span class="line">    executable2_label.config(text=&quot;2. &quot; + executable2_path)</span><br><span class="line"></span><br><span class="line"># 执行可执行文件的函数</span><br><span class="line">def execute_selected():</span><br><span class="line">    selected = executable_combobox.get()</span><br><span class="line">    if selected == &quot;1. &quot; + executable1_path:</span><br><span class="line">        subprocess.Popen([executable1_path])</span><br><span class="line">    elif selected == &quot;2. &quot; + executable2_path:</span><br><span class="line">        subprocess.Popen([executable2_path])</span><br><span class="line"></span><br><span class="line"># 创建并布局GUI组件</span><br><span class="line">list_button = ttk.Button(root, text=&quot;列出可执行文件&quot;, command=list_executables)</span><br><span class="line">execute_button = ttk.Button(root, text=&quot;执行所选文件&quot;, command=execute_selected)</span><br><span class="line">executable1_label = ttk.Label(root, text=&quot;&quot;)</span><br><span class="line">executable2_label = ttk.Label(root, text=&quot;&quot;)</span><br><span class="line">executable_combobox = ttk.Combobox(root, values=[&quot;1. &quot; + executable1_path, &quot;2. &quot; + executable2_path])</span><br><span class="line"></span><br><span class="line">list_button.pack()</span><br><span class="line">executable1_label.pack()</span><br><span class="line">executable2_label.pack()</span><br><span class="line">executable_combobox.pack()</span><br><span class="line">execute_button.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>用UtF-8编码保存好，然后启动一个EXE文件软件<br>执行下面代码app.py一定要是你的名称相同</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller --noconsole app.py</span><br></pre></td></tr></table></figure>
+<p>然后会生成一个dist\app文件夹，会在里面有一个app.exe</p>
+<p>到此结束</p>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2023/09/23/%E8%BD%AF%E8%B7%AF%E7%94%B1%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="软路由常用命令"><i class="fas fa-angle-left"></i><span class="nav-title">软路由常用命令</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2023/09/23/%E7%8E%A9%E5%AE%A2%E4%BA%91OpenWrt%E5%88%B7%E5%85%A5alist/" rel="prev" title="玩客云OpenWrt刷入alist"><span class="nav-title">玩客云OpenWrt刷入alist</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

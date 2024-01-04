@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>GPT聊天-绑定Hexo博客域名指南 | 保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/11/04/GPT%E8%81%8A%E5%A4%A9-%E7%BB%91%E5%AE%9AHexo%E5%8D%9A%E5%AE%A2%E5%9F%9F%E5%90%8D%E6%8C%87%E5%8D%97/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="LI BAO">
+       <meta itemprop="description" content="免费博客不定时更新！！！！！">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">GPT聊天-绑定Hexo博客域名指南</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-11-04T10:04:00+08:00">2023年11月04日 10:04:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p><strong>我问:</strong></p>
+<p>部署hexo博客时，能不能设置成自动绑定域名：bk.lifu.eu.org</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>Hexo 是一个静态网站生成器，你可以将你的博客部署到不同的主机或域名上。如果你想要将你的 Hexo 博客绑定到域名 “bk.lifu.eu.org”，你需要执行以下步骤：</p>
+<ul>
+<li><strong>购买域名</strong>：首先，你需要拥有该域名。你可以在域名注册商那里购买 “lifu.eu.org” 域名，然后设置子域名 “bk”。</li>
+<li><strong>配置 DNS</strong>：一旦你拥有了域名，你需要登录到你的域名注册商的控制面板，然后配置 DNS 记录。你需要创建一个 CNAME 记录，将 “bk” 指向你的 Hexo 博客的主机名或 IP 地址。</li>
+<li><strong>修改 Hexo 配置</strong>：在你的 Hexo 项目中，打开 <code>_config.yml</code> 文件，找到 <code>url</code> 和 <code>root</code> 字段，然后将它们设置为你的域名。例如：</li>
+</ul>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url: http://bk.lifu.eu.org</span><br><span class="line">root: /</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>重新生成静态网站</strong>：运行 <code>hexo clean</code> 来清除旧的生成文件，然后运行 <code>hexo generate</code> 来生成新的静态网站。</li>
+<li><strong>部署到服务器</strong>：将生成的静态文件部署到你的服务器或托管平台。这可以是通过 FTP、Git、或任何你偏好的方式。</li>
+<li><strong>设置 Web 服务器</strong>：如果你使用的是自己托管的服务器，确保你的 Web 服务器（比如 Nginx 或 Apache）配置正确，以便它可以识别到你的域名并提供相应的网页。</li>
+<li><strong>等待 DNS 传播</strong>：DNS 记录的更改需要时间传播到全球的 DNS 服务器，通常需要几小时或更长时间。一旦传播完成，你的域名 “bk.lifu.eu.org” 将会指向你的 Hexo 博客。</li>
+</ul>
+<p>这些步骤应该能够让你将你的 Hexo 博客绑定到 “bk.lifu.eu.org” 域名。请注意，确保在购买域名和设置 DNS 记录时按照你的域名注册商的文档和界面操作，因为不同的注册商可能会有不同的步骤和界面。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>我现在已绑定域名了，在博客的仓库目录下有个CNAME文件里面写着bk.lifu.eu.org，但我每次更新博文时，这个文件就消失了，又要操作重新绑定</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>CNAME 文件通常包含要绑定的自定义域名信息。如果你每次更新博文时都发现 CNAME 文件消失了，那可能是 Hexo 在生成新的静态网站时不保留这个文件。这可能是因为 Hexo 默认不会将 CNAME 文件包含在生成的静态文件中。</p>
+<p>为了解决这个问题，你可以尝试以下两种方法：</p>
+<p><strong>方法一：手动添加 CNAME 文件</strong></p>
+<p>每次生成静态网站后，手动将 CNAME 文件添加到生成的网站目录中。你可以在 Hexo 项目的根目录下创建一个 CNAME 文件，然后使用脚本或命令将它复制到生成的网站目录中。这样，每次生成网站时，CNAME 文件都会被包含在其中。</p>
+<ul>
+<li>在 Hexo 项目的根目录下创建一个名为 <code>CNAME</code> 的文件。</li>
+<li>在 <code>CNAME</code> 文件中写入你的域名：”bk.lifu.eu.org”。</li>
+<li>创建一个脚本或命令，将 <code>CNAME</code> 文件复制到生成的网站目录中。例如，你可以使用以下命令：</li>
+</ul>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp CNAME public/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在更新博文之后，运行生成静态网站的命令，然后运行复制 CNAME 文件的命令。</li>
+</ul>
+<p><strong>方法二：使用 Hexo 插件</strong></p>
+<p>你还可以考虑使用 Hexo 插件来自动处理 CNAME 文件。有一些 Hexo 插件可以帮助你自动添加 CNAME 文件到生成的静态网站目录中。一种常用的插件是 “hexo-generator-cname”。</p>
+<ul>
+<li>安装 “hexo-generator-cname” 插件：</li>
+</ul>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-cname --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 Hexo 项目的 <code>_config.yml</code> 文件中添加以下配置：</li>
+</ul>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cname:</span><br><span class="line">  domain: bk.lifu.eu.org</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这将告诉插件要生成的 CNAME 文件中包含 “bk.lifu.eu.org”。</p>
+<ul>
+<li>在更新博文后，运行生成静态网站的命令，插件会自动为你生成和包含 CNAME 文件。</li>
+</ul>
+<p>使用 Hexo 插件的方法更加方便，因为它会自动处理 CNAME 文件的生成，而不需要手动复制文件。这可以减少手动操作的需求。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>Administrator@libao2021 MINGW64 ~&#x2F;bk (master)<br>$ npm install hexo-generator-cname –save</p>
+<p>added 1 package, and audited 260 packages in 3s</p>
+<p>27 packages are looking for funding<br>  run <code>npm fund</code> for details</p>
+<p>found 0 vulnerabilities<br>npm notice<br>npm notice New major version of npm available! 9.6.1 -&gt; 10.2.1<br>npm notice Changelog: <a target="_blank" rel="noopener" href="https://github.com/npm/cli/releases/tag/v10.2.1">https://github.com/npm/cli/releases/tag/v10.2.1</a><br>npm notice Run <code>npm install -g npm@10.2.1</code> to update!<br>npm notice</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>你已经成功安装了 “hexo-generator-cname” 插件，根据你的命令行输出，没有出现任何错误或警告信息。现在，你只需要按照上述方法的步骤2和步骤3来配置插件并让它生成 CNAME 文件即可。这样，每次生成 Hexo 静态网站时，插件会自动包含你的域名信息在 CNAME 文件中。</p>
+<p>要配置插件，打开 Hexo 项目的 <code>_config.yml</code> 文件，添加以下内容：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cname:</span><br><span class="line">  domain: bk.lifu.eu.org</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后，运行生成静态网站的命令，插件会自动为你生成 CNAME 文件。安装 “hexo-generator-cname” 插件后，你就不再需要手动维护 CNAME 文件。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>为什么我在_config.yml文件最底下加入了cname:<br>  domain: bk.lifu.eu.org<br>更新博文后创建了CNAME文件，但里面的内容是：your-github-username.github.io</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>如果在 <code>_config.yml</code> 文件中加入了以下配置：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cname:</span><br><span class="line">  domain: bk.lifu.eu.org</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但在生成的 CNAME 文件中内容却是 “your-github-username.github.io”，这可能是由于你的 Hexo 配置文件中的域名设置被覆盖了。</p>
+<p>首先，请确保 <code>_config.yml</code> 文件中没有其他地方覆盖了 <code>url</code> 或 <code>root</code> 字段。这些字段应该与你的域名相关信息一致，例如：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url: http://bk.lifu.eu.org</span><br><span class="line">root: /</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果你的 <code>_config.yml</code> 文件中没有覆盖域名设置，而仍然出现了问题，你可以尝试以下方法：</p>
+<ul>
+<li>删除 <code>_config.yml</code> 文件底部的 <code>cname</code> 配置。</li>
+<li>使用以下命令清空 Hexo 缓存：</li>
+</ul>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重新生成 Hexo 网站：</li>
+</ul>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>确保 CNAME 文件正确生成。</li>
+</ul>
+<p>如果仍然出现问题，可以尝试手动编辑 <code>CNAME</code> 文件，将其内容更改为 “bk.lifu.eu.org”。然后，重新生成静态网站。如果手动编辑 CNAME 文件后仍然无效，有可能是 Hexo 插件或配置的问题，你可能需要查看插件的文档或咨询 Hexo 社区以解决问题。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>在哪里设置了域名？</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>在 Hexo 中，你可以在配置文件 <code>_config.yml</code> 中设置博客的域名。具体设置的地方是 <code>url</code> 字段。这个字段定义了你的博客的基本 URL 地址。</p>
+<p>在 <code>_config.yml</code> 文件中，你可以按照以下示例设置域名：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url: http://bk.lifu.eu.org</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这将指定你的博客的基本 URL 为 “<a href="http://bk.lifu.eu.org".请确保在设置域名时使用正确的协议(http/">http://bk.lifu.eu.org"。请确保在设置域名时使用正确的协议（http</a> 或 https）和域名地址。</p>
+<p>一旦你设置了 <code>url</code> 字段，并且 Hexo 配置正确，生成的 CNAME 文件会自动包含你的域名信息，不需要手动编辑它。如果你之前手动编辑了 CNAME 文件，可以尝试清除它，然后重新生成静态网站以确保 Hexo 正确生成 CNAME 文件。</p>
+<hr>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2023/10/30/%E6%B5%8B%E8%AF%95%E9%A1%B5/" rel="next" title="测试页KO"><i class="fas fa-angle-left"></i><span class="nav-title">测试页KO</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2023/11/05/GPT%E8%A1%A8%E6%A0%BC%E5%85%AC%E5%BC%8F%E5%87%BD%E6%95%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94/" rel="prev" title="GPT表格公式函数问题解答"><span class="nav-title">GPT表格公式函数问题解答</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

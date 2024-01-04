@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>linux下的删除文件命令 | 保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/linux%E4%B8%8B%E7%9A%84%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="LI BAO">
+       <meta itemprop="description" content="免费博客不定时更新！！！！！">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">linux下的删除文件命令</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>在linux中删除文件与文件夹我们可以直接使用rm就可以删除了，彻底删除文件或文件夹我们可以使用shred命令来完成，接下来是小编为大家收集的Linux下删除文件命令，希望能帮到大家。<br>Linux下删除文件命令</p>
+<p>linux删除目录很简单，很多人还是习惯用rmdir，不过一旦目录非空，就陷入深深的苦恼之中，现在使用rm -rf命令即可。</p>
+<p>直接rm就可以了，不过要加两个参数-rf 即：rm -rf 目录名字</p>
+<p>删除目录、文件 rm(remove)</p>
+<p>功能说明：删除文件或目录。</p>
+<p>语法：rm [-dfirv][–help][–version][文件或目录…]</p>
+<p>补充说明：执行rm指令可删除文件或目录，如欲删除目录必须加上参数”-r”，否则预设仅会删除文件。</p>
+<p>参数：</p>
+<p>-d或–directory 　直接把欲删除的目录的硬连接数据删成0，删除该目录。</p>
+<p>-f或–force 　强制删除文件或目录。</p>
+<p>-i或–interactive 　删除既有文件或目录之前先询问用户。</p>
+<p>-r或-R或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。</p>
+<p>-v或–verbose 　显示指令执行过程。</p>
+<p>1 删除文件夹</p>
+<p>de&gt;rm -rf fileNamede&gt;</p>
+<p>-删除文件夹实例：</p>
+<p>rm -rf &#x2F;var&#x2F;log&#x2F;httpd&#x2F;access</p>
+<p>将会删除&#x2F;var&#x2F;log&#x2F;httpd&#x2F;access目录以及其下所有文件、文件夹</p>
+<p>需要提醒的是：使用这个rm -rf的时候一定要格外小心，linux没有回收站的</p>
+<p>2 删除文件</p>
+<p>de&gt;rm -f fileNamede&gt;</p>
+<p>使用 rm -rf 的时候一定要格外小心，linux没有回收站的</p>
+<p>删除指定文件之外的其他文件</p>
+<p>一、Linux下删除文件和文件夹常用命令如下：</p>
+<p>删除文件： rm file</p>
+<p>删除文件夹： rm -rf dir</p>
+<p>需要注意的是， rmdir 只能够删除 空文件夹。</p>
+<p>二、删除制定文件(夹)之外的所有文件呢?</p>
+<p>1、方法1，比较麻烦的做法是：</p>
+<p>复制需要保留的文件到其他文件夹，然后将该目录删除， 然后将需要保留的移动 回来。</p>
+<p>mv keep ..&#x2F; #保留文件(夹) keep</p>
+<p>rm -rf * #删除当前文件夹里的所有文件</p>
+<p>mv ..&#x2F;keep .&#x2F; #将原来的东西移动回来</p>
+<p>2、方法2，需要在当前文件夹中进行:</p>
+<p>rm -rf !(keep) #删除keep文件之外的所有文件</p>
+<p>rm -rf !(keep1 | keep2) #删除keep1和keep2文件之外的所有文件</p>
+<p>Linux中彻底删除文件</p>
+<p>shred彻底删除文件的方法:</p>
+<p>$ shred -u file</p>
+<p>shred会用一些随机内容覆盖文件所在的节点和数据块，并删除文件(-u参数)。</p>
+<p>如果想清除的更彻底一点可以加-z 参数，意思是先用随机数据填充，最后再用0填充。</p>
+<p>$ shred -u -z file</p>
+<p>另外shred还可以清除整个分区或磁盘，比如想彻底清除&#x2F;dev&#x2F;sdb1分区的内容可以这样:</p>
+<p>$ shred &#x2F;dev&#x2F;sdb1 (注意不要加-u参数)</p>
+<p>shred的详细参数：</p>
+<p>-f, –force 更改权限允许写入(如有必要)</p>
+<p>-n, –iterations&#x3D;N 重写N次，默认为3次</p>
+<p>–random-source&#x3D;FILE 从指定文件读取数据</p>
+<p>-s, –size&#x3D;N 将文件粉碎为固定大小 (可使用后缀如K、M、C等)</p>
+<p>-u, –remove 重写后截短并移除文件</p>
+<p>-v, –verbose 显示进度</p>
+<p>-z, –zero - add 用0覆盖数据</p>
+<p>–help 显示帮助</p>
+<p>–version 显示版本信息</p>
+<p>看了“Linux下删除文件命令”还想看：<br>reboot  重启<br>poweroff    关机</p>
+<p>查看当前可运行或可安装的所有ls    （LS）<br>就是ls</p>
+<p>运行脚本指令<br>bash</p>
+<p>例如运行install7.sh</p>
+<p>可以这样<br>bash install7.sh</p>
+<p>查看当前可运行或可安装的所有ls    （LS）<br>就是ls</p>
+<p>运行脚本指令<br>bash</p>
+<p>例如运行install7.sh</p>
+<p>可以这样<br>bash install7.sh</p>
+<p>在Linux系统中设置中文，一般需要进行以下步骤：</p>
+<p>安装中文字体<br>在终端中输入以下命令安装中文字体：</p>
+<p>csharp<br>Copy code<br>sudo apt-get install fonts-wqy-zenhei<br>安装中文输入法<br>在终端中输入以下命令安装中文输入法：</p>
+<p>sql<br>Copy code<br>sudo apt-get install fcitx fcitx-config-gtk fcitx-googlepinyin fcitx-table-all<br>配置系统语言环境<br>在终端中输入以下命令打开语言环境配置界面：</p>
+<p>Copy code<br>sudo dpkg-reconfigure locales<br>在弹出的窗口中，选择需要的语言环境，例如选择中文，然后按照提示完成配置即可。</p>
+<p>配置输入法<br>打开终端，输入以下命令：</p>
+<p>lua<br>Copy code<br>im-config<br>在弹出的窗口中，选择fcitx作为默认的输入法，然后保存退出即可。</p>
+<p>重启系统<br>重启系统后，打开任意文本编辑器，按下Ctrl + Space可以切换输入法，测试输入法是否正常。</p>
+<p>希望这些步骤能帮助您在您的系统中设置中文。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2023/09/23/%E5%9B%BA%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="next" title="固件使用说明"><i class="fas fa-angle-left"></i><span class="nav-title">固件使用说明</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2023/09/23/docker%E8%AF%B4%E6%98%8E1/" rel="prev" title="docker说明1"><span class="nav-title">docker说明1</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

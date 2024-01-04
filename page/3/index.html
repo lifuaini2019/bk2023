@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+
+<div id="index" class="index page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E5%9B%BA%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E5%9B%BA%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" itemprop="url">固件使用说明</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>因固件有更新，有些界面显示不同，登录密码为 998877Dd 八位。</p>
+<p>教程收集于网络，都是百度来的，也不知道出自于谁了，是很多教程里扒出来的，这里一段那里一段的代码。<br>前前后后搞了一个多月，最近才稳定下来，基本也就停在了此固件，几天不弄，就会忘记，所以想记录下来。<br>于是就又买了一台玩客云，一边操作一边记录，这样即使自己忘记了，也能再来这儿重新刷。</p>
+<p>以下的代码，可以按顺序操作，也可以只捡自己喜欢的部分操作。<br>包括：samba,docker,portainer,openwrt,transmission,nextcloud,blog,aira2,verysync,qbittorrent,minidlan<br>如果你和我一样，只需要挂载硬盘，做为家里的多媒体中心，在各各设备上播放视频音频图片，可以只和我一样，<br>只安装几个需要的即可。</p>
+<p>你需要，双公头USB（自己做一根也可以），网线，U盘或是读卡器</p>
+<p>好了，首先刷底包。短接主板上两点后能电，电脑有提示声后即可烧录</p>
+<p>把下载的固件镜像通过写盘工具写到u盘，插入到靠近网口的usb上，插上电源方可加载系统</p>
+<p>第一次启动会很慢，稍安勿躁</p>
+<p>启动以后，去路由器里拿到ip</p>
+<p>这时候系统还是在u盘了的</p>
+<p>cd &#x2F;boot&#x2F;install<br>.&#x2F;install.sh<br>会把系统写入到emmc中</p>
+<p>等待写入完毕会自动退出<br>拔下u盘，拔电重启</p>
+<p>耐心等待启动完毕，ip大概率还是之前的ip，如果登陆不了就去路由器里确认。</p>
+<p>再次登录成功，系统就刷好了</p>
+<p>挂载硬盘</p>
+<p>创建&#x2F;data 目录：</p>
+<p>mkdir &#x2F;data</p>
+<p>开始挂载分区：</p>
+<p>lsblk   #显示所有硬盘</p>
+<p>mount &#x2F;dev&#x2F;sda1 &#x2F;data</p>
+<p>配置开机自动挂载</p>
+<p>因为mount挂载在重启服务器后会失效，所以需要将分区信息写到&#x2F;etc&#x2F;fstab文件中让它永久挂载：<br>两种方法修改，其一<br>vim &#x2F;etc&#x2F;fstab<br>其二可以在软件可视化操作路径找到<br>加入：</p>
+<p>&#x2F;dev&#x2F;sdb1(磁盘分区) &#x2F;data（挂载目录） ext4（文件格式）defaults 0 0</p>
+<h2 id="安装samba实现共享"><a href="#安装samba实现共享" class="headerlink" title="安装samba实现共享"></a>安装samba实现共享</h2><p>插上移动硬盘或者u盘，我这里是一个u盘</p>
+<p>需要分区格式化，我这里就不演示了，用fdisk或者parted分区，挂载</p>
+<p>我挂在到了&#x2F;data目录上</p>
+<p>安装samba</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update </span><br><span class="line">apt install samba</span><br><span class="line"># 设置用户	</span><br><span class="line">这是用户名 lifuaini   这是密码123456</span><br><span class="line">useradd lifuaini</span><br><span class="line">smbpasswd -a lifuaini</span><br><span class="line"># ab7878771</span><br></pre></td></tr></table></figure>
+<p>如果想添加用户名和密码<br>root@localhost sir01]# smbpasswd -a lifuaini</p>
+<p>New SMB password:ab7878771 注:在这里添加Samba用户lifuaini的密码;ab7878771</p>
+<p> 配置相关目录的权限和归属;</p>
+<p>[root@cuc03 ~]# chmod 755 &#x2F;opt&#x2F;lifuaini</p>
+<p>配置共享的目录<br>nano  &#x2F;etc&#x2F;samba&#x2F;smb.conf</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[wkyshare]</span><br><span class="line">   comment = wky shares</span><br><span class="line">   path = /mnt/libao2</span><br><span class="line">   create mask = 0664</span><br><span class="line">   directory mask = 0775</span><br><span class="line">   read only = No</span><br><span class="line">   valid users = lifuaini</span><br></pre></td></tr></table></figure>
+<p>删除<br>sudo apt-get remove samba-common</p>
+<p>重启服务</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart smbd</span><br><span class="line">systemctl <span class="built_in">enable</span> smbd</span><br><span class="line"><span class="comment"># 可以在局域网的win机器访问</span></span><br><span class="line"><span class="comment"># \\ip 查看共享是否正常</span></span><br></pre></td></tr></table></figure>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;<br>安装docker</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install docker.io</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<h2 id="下面是必装镜像"><a href="#下面是必装镜像" class="headerlink" title="下面是必装镜像"></a>下面是必装镜像</h2><p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;<br>安装可视化管理<br>Docker 拉取命令<br>docker pull wangbinxingkong&#x2F;fast</p>
+<p>docker run –restart always –name fast -p 8081:8081 -d -v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock wangbinxingkong&#x2F;fast</p>
+<p>安装完成后在浏览器访问http:&#x2F;&#x2F;服务器IP地址或域名:8081。<br>首次点注册。注册好像没提示成功，点完注册一会没反应就点陆即可</p>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-<br>安装路由器</p>
+<p>docker pull virking&#x2F;openwrt:20.04<br>ip link set eth0 promisc on<br>docker network create -d macvlan –subnet&#x3D;192.168.3.0&#x2F;24 –gateway&#x3D;192.168.3.1 -o parent&#x3D;eth0 macnet</p>
+<p>启动一个openwrt容器<br>docker run -i -t -d –name&#x3D;openwrt –restart&#x3D;always –network&#x3D;macnet –privileged&#x3D;true virking&#x2F;openwrt:20.04 &#x2F;sbin&#x2F;init</p>
+<p>编辑网卡<br>vi &#x2F;etc&#x2F;config&#x2F;network<br>内容如下，注意修改网段</p>
+<p>config interface ‘loopback’<br>        option ifname ‘lo’<br>        option proto ‘static’<br>        option ipaddr ‘127.0.0.1’<br>        option netmask ‘255.0.0.0’</p>
+<p>config globals ‘globals’<br>        option ula_prefix ‘fdd3:60d7:a044::&#x2F;48’</p>
+<p>config interface ‘lan’<br>        option type ‘bridge’<br>        option ifname ‘eth0’<br>        option proto ‘static’<br>        option ipaddr ‘192.168.1.254’ #openwrt的IP地址，可自定义网段内任意IP，不发生冲突即可<br>        option netmask ‘255.255.255.0’<br>        option gateway ‘192.168.1.1’ #填写主路由的IP地址<br>        option dns ‘192.168.1.1’ #填写主路由的IP地址</p>
+<p>config interface ‘vpn0’<br>        option ifname ‘tun0’<br>        option proto ‘none’</p>
+<p>重启玩客云等待openwrt启动后<br>账密：root-password</p>
+<p>回到玩客云shell<br> &#x2F;etc&#x2F;network&#x2F;interfaces &#x2F;etc&#x2F;network&#x2F;interfaces.bak<br> vi &#x2F;etc&#x2F;network&#x2F;interfaces</p>
+<p>添加如下内容<br>auto macvlan<br>iface macvlan inet static<br>  address 192.168.168.8<br>  netmask 255.255.255.0<br>  gateway 192.168.168.1<br>  dns-nameservers 192.168.168.1<br>  pre-up ip link add macvlan link eth0 type macvlan mode bridge<br>  post-down ip link del macvlan link eth0 type macvlan mode bridge</p>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;</p>
+<p>Bushu transmission</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker run \</span><br><span class="line">  -d \</span><br><span class="line">  --name=transmission \</span><br><span class="line">  -e USERNAME=admin \</span><br><span class="line">  -e PASSWORD=admin \</span><br><span class="line">  -e PUID=1000 \</span><br><span class="line">  -e PGID=1000 \</span><br><span class="line">  -p 9091:9091 \</span><br><span class="line">  -p 51413:51413 \</span><br><span class="line">  -p 51413:51413/udp \</span><br><span class="line">  -v /data/transmission/config:/config \</span><br><span class="line">  -v /data:/downloads \</span><br><span class="line">  -v /data/transmission/watch:/watch \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">lsioarmhf/transmission</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>给transmission安装界面<br>到docker的shell中<br>wget <a target="_blank" rel="noopener" href="https://gitee.com/culturist/transmission-web-control/raw/master/release/install-tr-control-gitee.sh">https://gitee.com/culturist/transmission-web-control/raw/master/release/install-tr-control-gitee.sh</a><br>bash install-tr-control-cn.sh</p>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;</p>
+<p>网盘nextcloud</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name nextcloud \</span><br><span class="line">-p 8085:80 \</span><br><span class="line">-v /data/docker/nextcloud/html:/var/www/html \</span><br><span class="line">-e TZ=Asia/Shanghai \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">nextcloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;<br>blog</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80:80 --name typecho -v <span class="string">&quot;/data/tyepcho&quot;</span>:/var/www/html yangxuan8282/typecho:php-arm</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-<br>aria2</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --name aria2-pro \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    --log-opt max-size=1m \</span><br><span class="line">    --network host \</span><br><span class="line">    -e PUID=1000 \</span><br><span class="line">    -e PGID=1000 \</span><br><span class="line">    -e RPC_SECRET=12345 \</span><br><span class="line">    -e RPC_PORT=6800 \</span><br><span class="line">    -e LISTEN_PORT=6888 \</span><br><span class="line">    -v /data/docker/aria2/config:/config \</span><br><span class="line">    -v /data/downloads:/downloads \</span><br><span class="line">    p3terx/aria2-pro</span><br></pre></td></tr></table></figure>
+
+<p>浏览器安装插件连接 6800端口即可</p>
+<p>web ui</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;<br>同步工具</p>
+<p>verysync</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--restart=unless-stopped \</span><br><span class="line">--name verysync \</span><br><span class="line">-v /data/verysync:/data \</span><br><span class="line">-p 8886:8886 \</span><br><span class="line">unwenliu/verysync:armv7</span><br></pre></td></tr></table></figure>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;<br>qbittorrent</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name=qbittorrent \</span><br><span class="line">  -e PUID=1000 \</span><br><span class="line">  -e PGID=1000 \</span><br><span class="line">  -e TZ=Aisa/Shanghai \</span><br><span class="line">  -e WEBUI_PORT=8080 \</span><br><span class="line">  --network host \</span><br><span class="line">  -v /data/docker/qb/config:/config \</span><br><span class="line">  -v /data/qb_downloads:/downloads \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  ghcr.io/linuxserver/qbittorrent</span><br></pre></td></tr></table></figure>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;</p>
+<p>minidlna安装和设置</p>
+<p>安装minidlna：<br>apt-get install minidlna</p>
+<p>编辑文件<br>nano &#x2F;etc&#x2F;minidlna.conf</p>
+<p>修改：<br>media_dir&#x3D;A,&#x2F;data<br>#其中A,代表是音乐文件。&#x2F;data  是挂载硬盘的路径，根据自己前面设置的结果修改，不指定媒体文件A,P,V,可以不加</p>
+<p>举例：<br>media_dir&#x3D;A,&#x2F;data        #音乐文件目录<br>media_dir&#x3D;P,&#x2F;data        #图像文件目录<br>media_dir&#x3D;V,&#x2F;data        #视频文件目录</p>
+<p>db_dir&#x3D;&#x2F;var&#x2F;cache&#x2F;minidlna      #数据库目录，可自行修改路径。去掉前面的#。</p>
+<p>重启本服务minidlna<br>sudo service minidlna start<br>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;</p>
+<p>硬盘休眠</p>
+<h1 id="安装和配置-hd-idle"><a href="#安装和配置-hd-idle" class="headerlink" title="安装和配置 hd-idle"></a>安装和配置 hd-idle</h1><p>如果你的硬盘不支持 hdparm，或者就想试下hd-idle, 可以删除hdparm</p>
+<p>sudo apt-get remove hdparm -y</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hd-idle 使用一个特殊的系统文件来检测磁盘活动, 如果没有这个文件，那么就不能使用hd-idle。输入</span><br></pre></td></tr></table></figure>
+<p>cat &#x2F;proc&#x2F;diskstats</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">应该会看到如下的输出, 如果提示找不到文件或目录，那就不支持hd-idle。</span><br><span class="line">8 16 sdb 5604 130363 146538 16780 1814 51838 429152 763380 0 18230 780150</span><br><span class="line">8 17 sdb1 5075 130363 139418 15370 8 0 8 10 0 8680 15370</span><br><span class="line">8 18 sdb2 512 0 6984 1290 1805 51838 429144 763360 0 9770 764650</span><br><span class="line">hd-idle的自己编译，</span><br></pre></td></tr></table></figure>
+<p>sudo apt-get install build-essential fakeroot debhelper -y</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">获取源代码，</span><br></pre></td></tr></table></figure>
+<p>wget <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/hd-idle/files/hd-idle-1.05.tgz">http://sourceforge.net/projects/hd-idle/files/hd-idle-1.05.tgz</a></p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">解压缩进入目录</span><br></pre></td></tr></table></figure>
+<p>tar -xvf hd-idle-1.05.tgz &amp;&amp; cd hd-idle</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">编译安装，</span><br></pre></td></tr></table></figure>
+<p>dpkg-buildpackage -rfakeroot<br>sudo dpkg -i ..&#x2F;hd-idle_*.deb</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">继续检查硬盘是否支持hd-idle,</span><br></pre></td></tr></table></figure>
+<p>sudo hd-idle -i 0 -a sda -i 300 -d</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">你会看到如下输出：</span><br><span class="line">probing sda: reads: 13418, writes: 594344</span><br><span class="line">probing sdb: reads: 146538, writes: 429152</span><br><span class="line">按 Ctrl+C 停止 hd-idle</span><br><span class="line">编辑配置文件，</span><br></pre></td></tr></table></figure>
+<p>sudo vim &#x2F;etc&#x2F;default&#x2F;hd-idle</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改下面来开启hd-idle</span><br></pre></td></tr></table></figure>
+<p>START_HD_IDLE&#x3D;true</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">调整空闲时间为10分钟 (60 秒 * 10)</span><br></pre></td></tr></table></figure>
+<p>HD_IDLE_OPTS&#x3D;”-i 0 -a sda -i 600”</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">重启服务，</span><br><span class="line">``</span><br><span class="line">sudo service hd-idle restart</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E5%AE%89%E8%A3%85CO/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E5%AE%89%E8%A3%85CO/" itemprop="url">安装CO</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>检查时间<br>date -R</p>
+<p>如果时区及时间不对。执行下面的操作<br>cp &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai  &#x2F;etc&#x2F;localtime</p>
+<p>再次检查时间<br>date -R</p>
+<p>接下来是添加系统的软件源，这样可以提高安装成功率。输入：<br>nano &#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>然后按方向键到最后在空白处添加以下代码：<br>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-updates main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-updates-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-updates-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-updates main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-backports main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-backports-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-backports-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-backports main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian-security">https://mirrors.tuna.tsinghua.edu.cn/debian-security</a> bullseye-security main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-security-bullseye-security-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-security-bullseye-security-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian-security">https://mirrors.tuna.tsinghua.edu.cn/debian-security</a> bullseye-security main contrib non-free</h1><p>然后就是安装casaos系统了，casaos的安装只要这一条代码就可以<br>wget -qO- <a target="_blank" rel="noopener" href="https://get.casaos.io/">https://get.casaos.io</a> | bash</p>
+<p>如果你的网络不好，可以执行这个国内源代码试试（注意使用了国内源的一键安装以后是无法自动升级casaos系统的）：<br>curl -fsSL cn-get.casaos.io | bash</p>
+<p>小贴士：有很多小伙伴会卡在安装这步，主要还是网络问题。因为casaos的软件源在国外，大家有加速环境的最好能用上。<br>另外，还总结了一些方法：<br>换源是可以把原先的软件源用“#”注释掉。比如</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free-1"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free-1" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye main contrib non-free</h1><p>这句前面加了“#”，系统就不会运行这句代码了。同样地可以把复制粘贴的新代码去掉注释，这样就会有更多的新软件源。<br>另外有的网友不添加软件源反而安装成功了，大家也可以试试。（我怀疑是网络原因，与换源无关）<br>最后还有小伙伴说他用最新版的底包刷机就成功了，我之前刷机的时候是不成功的。也许是casaos更新了版本的缘故。</p>
+<p>安装好以后，在ssh里运行这一段命令，安装alist的docker镜像：<br>docker run -d –restart&#x3D;always -v &#x2F;etc&#x2F;alist:&#x2F;opt&#x2F;alist&#x2F;data -p 5244:5244 -e PUID&#x3D;0 -e PGID&#x3D;0 -e UMASK&#x3D;022 –name&#x3D;”alist” xhofe&#x2F;alist:latest</p>
+<p>在运行这个命令来查看alist：<br>docker exec -it alist .&#x2F;alist admin</p>
+<p>停止并删除现有的 Alist 容器（如果已经在运行）：</p>
+<p>docker stop alist<br>docker rm alist</p>
+<p>拉取最新的 Alist 镜像：</p>
+<p>docker pull xhofe&#x2F;alist:latest</p>
+<p>重新运行 Alist 容器：</p>
+<p>docker run -d –restart&#x3D;always -v &#x2F;etc&#x2F;alist:&#x2F;opt&#x2F;alist&#x2F;data -p 5244:5244 -e PUI</p>
+<p>使用随机密码： 运行以下命令以生成随机密码：</p>
+<p>docker exec -it alist .&#x2F;alist admin random</p>
+<p>alist 的帮助文档<br><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/">https://alist.nn.ci/zh/guide/</a></p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E5%AE%89%E8%A3%85minidlna/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E5%AE%89%E8%A3%85minidlna/" itemprop="url">安装minidlna</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>更新源地址<br>更换源 &#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>deb <a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/">http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/</a> buster main contrib non-free rpi<br>deb-src <a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/">http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/</a> buster main contrib non-free rpi</p>
+<p>1、安装<br>安装minidlna：<br>apt-get install minidlna</p>
+<p>sudo apt-get install minidlna</p>
+<p>上面两种方法其中一种，第一种我用开的</p>
+<p>2、修改配置</p>
+<p>#打开配置文件</p>
+<p>sudo vi &#x2F;etc&#x2F;minidlna.conf</p>
+<p>#可参考修改的项有：</p>
+<p>参数名	说明<br>port	服务端口，默认为8200。如果有防火墙配置，需要开放。<br>media_dir<br>媒体目录可以设置多个，如：media_dir&#x3D;V,&#x2F;noah&#x2F;videos（逗号前为类型标识：A音频，P图片，V视频）<br>friendly_name<br>服务名称，在其它设备中看到的名称<br>inotify<br>设置为true，将自动发现媒体目录中的新文件</p>
+<p>3、你可以选择让minidlna随机启动</p>
+<p>sudo update-rc.d minidlna defaults</p>
+<p>4、启动minidlna服务</p>
+<p>sudo service minidlna start</p>
+<p>5、当你修改配置文件及媒体资源更新时，需要强制刷新，以便minidlna将最新的媒体文件进行索引</p>
+<p>sudo service minidlna force-reload</p>
+<p>6、查看资源个数</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.1.106:8200/">http://192.168.1.106:8200/</a></p>
+<p>7、取消minidlna的开机自动启动</p>
+<p>sudo update-rc.d -f minidlna remove</p>
+<p>8、停止minidlna服务</p>
+<p>sudo service minidlna stop</p>
+<p>9、停止minidlna所有进程</p>
+<p>sudo killall minidlna</p>
+<p>10、卸载minidlna</p>
+<p>sudo apt-get remove –purge minidlna</p>
+<p>以下步正确，另一个网页</p>
+<p>在树莓派中部署 minidlna<br>  minidlna 是一个使用 dlna 协议的软件，可以向外提供流媒体服务，实现在线的视频或者音乐的播放。</p>
+<p>步骤一<br>  使用 apt-get 命令安装 minidlna</p>
+<p> sudo apt-get update<br> sudo apt-get install minidlna<br>步骤二<br>  修改 minidlna 配置文件，这里将 minidlna 的目录配置为 &#x2F;minidlna</p>
+<p> mkdir &#x2F;minidlna<br> vi &#x2F;etc&#x2F;minidlna.conf<br>  修改配置文件中的 media_dir 配置项</p>
+<p>media_dir&#x3D;&#x2F;minidlna<br>步骤三<br>  修改完配配置文件后可以将媒体文件放入 &#x2F;minidlna 目录，或者使用 mount 命令将其他磁盘挂载到该目录。<br>  这里使用外置的U盘挂载到 &#x2F;minidlna 目录，首先查看U盘设备。</p>
+<p> sudo fdisk -l<br>  可以通过磁盘大小来判断U盘的盘符，并挂载该U盘，例如这里U盘设备为 &#x2F;dev&#x2F;sda1</p>
+<p> sudo mount &#x2F;dev&#x2F;sda1 &#x2F;minidlna<br>  可以使用 ls 命令查看 &#x2F;minidlna 是否挂载成功，成功显示U盘内容即可。</p>
+<p> ls &#x2F;minidlna<br>步骤四<br>启动 minidlna 服务，并查看服务状态。</p>
+<p>&#x2F;etc&#x2F;init.d&#x2F;minidlna restart<br>&#x2F;etc&#x2F;init.d&#x2F;minidlna status<br>也可以使用 systemctl 命令启动服务</p>
+<p> systemctl restart minidlna<br> systemctl status minidlna<br>————————————————</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E5%AE%89%E8%A3%85samba%E4%B8%93%E7%94%A8/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E5%AE%89%E8%A3%85samba%E4%B8%93%E7%94%A8/" itemprop="url">安装samba专用</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>2022年5月3日有效，装得了<br>安装samba</p>
+<p>更换源 &#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>deb <a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/">http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/</a> buster main contrib non-free rpi<br>deb-src <a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/">http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/</a> buster main contrib non-free rpi</p>
+<p>执行下面代码</p>
+<p>apt-get update</p>
+<p>apt install samba</p>
+<h1 id="设置用户"><a href="#设置用户" class="headerlink" title="设置用户"></a>设置用户</h1><p>这是用户名 lifuaini   这是密码123456<br>useradd lifuaini<br>smbpasswd -a lifuaini</p>
+<h1 id="ab7878771"><a href="#ab7878771" class="headerlink" title="ab7878771"></a>ab7878771</h1><figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">如果想添加用户名和密码</span><br><span class="line">root@localhost sir01]# smbpasswd -a lifuaini</span><br><span class="line"></span><br><span class="line">New SMB password:ab7878771 注:在这里添加Samba用户lifuaini的密码;ab7878771</span><br><span class="line"></span><br><span class="line"> 配置相关目录的权限和归属;</span><br><span class="line"></span><br><span class="line">[root@cuc03 ~]# chmod 755 /opt/lifuaini</span><br><span class="line"></span><br><span class="line">配置共享的目录</span><br><span class="line">nano  /etc/samba/smb.conf</span><br><span class="line">```bash下面复制到文本最后面</span><br><span class="line">[wkyshare]</span><br><span class="line">   comment = wky shares</span><br><span class="line">   path = /mnt/libao2</span><br><span class="line">   create mask = 0664</span><br><span class="line">   directory mask = 0775</span><br><span class="line">   read only = No</span><br><span class="line">   valid users = lifuaini</span><br></pre></td></tr></table></figure>
+<p>删除<br>sudo apt-get remove samba-common</p>
+<p>重启服务</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart smbd</span><br><span class="line">systemctl <span class="built_in">enable</span> smbd</span><br><span class="line"><span class="comment"># 可以在局域网的win机器访问</span></span><br><span class="line"><span class="comment"># \\ip 查看共享是否正常</span></span><br></pre></td></tr></table></figure>
+<p>-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E5%AE%9D%E5%A1%94%E5%B8%90%E5%8F%B7%E5%AF%86%E7%A0%81/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E5%AE%9D%E5%A1%94%E5%B8%90%E5%8F%B7%E5%AF%86%E7%A0%81/" itemprop="url">宝塔帐号密码</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>1T<br>Bt-Panel: <a target="_blank" rel="noopener" href="http://192.168.3.33:8888/">http://192.168.3.33:8888</a><br>username: </p>
+<p>2黑<br>Bt-Panel: <a target="_blank" rel="noopener" href="http://192.168.3.23:8888/">http://192.168.3.23:8888</a><br>username: ughmhadf<br>password: 6ab12b7d</p>
+<p>Warning:<br>If you cannot access the panel,<br>release the following port (8888|888|80|443|20|21) in the security group</p>
+<p>Bt-Panel: <a target="_blank" rel="noopener" href="http://192.168.3.49:8888/">http://192.168.3.49:8888</a><br>username: tndzgrvu<br>password: c39541b3<br>Warning:<br>If you cannot access the panel,<br>release the following port (8888|888|80|443|20|21) in the security group<br>|21) in the security group</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E6%9B%B4%E6%96%B0%E6%BA%90%E4%B8%8E%E5%AE%89%E8%A3%85%E5%AE%9D%E6%88%AA5%E7%82%B99%E5%92%8C/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E6%9B%B4%E6%96%B0%E6%BA%90%E4%B8%8E%E5%AE%89%E8%A3%85%E5%AE%9D%E6%88%AA5%E7%82%B99%E5%92%8C/" itemprop="url">更新源与安装宝截5点9</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>更换源 &#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>deb <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian">https://mirrors.ustc.edu.cn/debian</a> buster main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-ustc-edu-cn-debian-buster-main-contrib-non-free"><a href="#deb-src-https-mirrors-ustc-edu-cn-debian-buster-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.ustc.edu.cn/debian buster main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian">https://mirrors.ustc.edu.cn/debian</a> buster main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian">https://mirrors.ustc.edu.cn/debian</a> buster-updates main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-ustc-edu-cn-debian-buster-updates-main-contrib-non-free"><a href="#deb-src-https-mirrors-ustc-edu-cn-debian-buster-updates-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.ustc.edu.cn/debian buster-updates main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian">https://mirrors.ustc.edu.cn/debian</a> buster-updates main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian">https://mirrors.ustc.edu.cn/debian</a> buster-backports main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-ustc-edu-cn-debian-buster-backports-main-contrib-non-free"><a href="#deb-src-https-mirrors-ustc-edu-cn-debian-buster-backports-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.ustc.edu.cn/debian buster-backports main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian">https://mirrors.ustc.edu.cn/debian</a> buster-backports main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian-security/">https://mirrors.ustc.edu.cn/debian-security/</a> buster&#x2F;updates main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-ustc-edu-cn-debian-security-buster-updates-main-contrib-non-free"><a href="#deb-src-https-mirrors-ustc-edu-cn-debian-security-buster-updates-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.ustc.edu.cn/debian-security/ buster&#x2F;updates main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/debian-security/">https://mirrors.ustc.edu.cn/debian-security/</a> buster&#x2F;updates main contrib non-free</h1><p>执行下面代码</p>
+<p>apt-get update</p>
+<p>apt-get upgrade</p>
+<p>sudo apt-get install python-setuptools</p>
+<p>wget -O install.sh <a target="_blank" rel="noopener" href="http://download.bt.cn/install/install.sh">http://download.bt.cn/install/install.sh</a> &amp;&amp; sh install.sh</p>
+<p>自动安装完成后会显示账号密码，首次登陆后可以进行更改。</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E6%9D%8E%E4%BF%9D%E4%BA%B2%E5%8E%86%E8%A3%85docker%E7%BB%8F%E8%BF%87%E4%B8%8ECO/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E6%9D%8E%E4%BF%9D%E4%BA%B2%E5%8E%86%E8%A3%85docker%E7%BB%8F%E8%BF%87%E4%B8%8ECO/" itemprop="url">装docker经过与CO</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>查时间<br>date -R</p>
+<p>如果时区及时间不对。执行下面的操作<br>cp &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai  &#x2F;etc&#x2F;localtime</p>
+<p>再次检查时间<br>date -R</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install docker.io</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 8000:8000 \</span><br><span class="line">  -p 9000:9000 \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  -v /data/docker/portainer/data:/data \</span><br><span class="line">  --name=portainer \</span><br><span class="line">  --restart=always \</span><br><span class="line">  portainer/portainer-ce</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行命令下面</p>
+<p>sudo ip link set eth0 promisc on</p>
+<p>docker network create -d macvlan –subnet&#x3D;192.168.3.0&#x2F;24 –gateway&#x3D;192.168.3.1 -o parent&#x3D;eth0 macnet</p>
+<p>接取镜像<br>docker pull dreamwsbg&#x2F;openwrt:7.0</p>
+<p>运行容器<br>docker run -d –name&#x3D;”openwrt” –restart unless-stopped –network macnet –privileged dreamwsbg&#x2F;openwrt:7.0 &#x2F;sbin&#x2F;init</p>
+<p>进入容器后台<br>docker exec -it openwrt bash</p>
+<p>5.2修改网络<br>vim &#x2F;etc&#x2F;config&#x2F;network</p>
+<p>修改部分选项（按需修改。按“i”输入 ;     按“ESC” ,输入”:” ,”w” , “q” 保存退出）</p>
+<p>  config interface ‘lan’<br>  option proto ‘static’<br>  option ipaddr ‘192.168.0.5’（opwrt地址）<br>  option netmask ‘255.255.255.0’(子网掩码)<br>  option ip6assign ’60’<br>  option gateway ‘192.168.3.1’(网关,这个可以自已加)</p>
+<p>  5.3 重启网络<br>&#x2F;etc&#x2F;init.d&#x2F;network restart</p>
+<p>装可视面板</p>
+<p>docker run –restart always –name fast -p 8081:8081 -d -v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock wangbinxingkong&#x2F;fast</p>
+<p>然后就是安装casaos系统了，casaos的安装只要这一条代码就可以<br>wget -qO- <a target="_blank" rel="noopener" href="https://get.casaos.io/">https://get.casaos.io</a> | bash<br>如果你的网络不好，可以执行这个国内源代码试试（注意使用了国内源的一键安装以后是无法自动升级casaos系统的）：<br>curl -fsSL cn-get.casaos.io | bash</p>
+<p>安装好以后，在ssh里运行这一段命令，安装alist的docker镜像：<br>docker run -d –restart&#x3D;always -v &#x2F;etc&#x2F;alist:&#x2F;opt&#x2F;alist&#x2F;data -p 5244:5244 -e PUID&#x3D;0 -e PGID&#x3D;0 -e UMASK&#x3D;022 –name&#x3D;”alist” xhofe&#x2F;alist:latest</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6/" itemprop="url">查看系统硬件</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>onecloud<br>    description: Computer<br>    product: AMLOGIC<br>    width: 32 bits<br>    capabilities: smp<br>  *-core<br>       description: Motherboard<br>       physical id: 0<br>     *-cpu:0<br>          description: CPU<br>          product: cpu<br>          physical id: 0<br>          bus info: cpu@0<br>          size: 1488MHz<br>          capacity: 1536MHz<br>          capabilities: cpufreq<br>     *-cpu:1<br>          description: CPU<br>          product: cpu<br>          physical id: 1<br>          bus info: cpu@1<br>          size: 1488MHz<br>          capacity: 1536MHz<br>          capabilities: cpufreq<br>     *-cpu:2<br>          description: CPU<br>          product: cpu<br>          physical id: 2<br>          bus info: cpu@2<br>          size: 1488MHz<br>          capacity: 1536MHz<br>          capabilities: cpufreq<br>     *-cpu:3<br>          description: CPU<br>          product: cpu<br>          physical id: 3<br>          bus info: cpu@3<br>          size: 1488MHz<br>          capacity: 1536MHz<br>          capabilities: swp half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 cpufreq<br>     *-memory<br>          description: System memory<br>          physical id: 4<br>          size: 792MiB<br>  *-usbhost:0<br>       product: DWC OTG Controller<br>       vendor: Linux 3.10.108 dwc_otg_hcd<br>       physical id: 1<br>       bus info: usb@2<br>       logical name: usb2<br>       version: 3.10<br>       capabilities: usb-2.00<br>       configuration: driver&#x3D;hub slots&#x3D;1 speed&#x3D;480Mbit&#x2F;s<br>     *-usb<br>          description: Mouse<br>          product: 2.4G Mouse<br>          vendor: SHARKOON Technologies GmbH<br>          physical id: 1<br>          bus info: usb@2:1<br>          version: 2.00<br>          capabilities: usb-1.10<br>          configuration: driver&#x3D;usbhid maxpower&#x3D;100mA speed&#x3D;12Mbit&#x2F;s<br>  *-usbhost:1<br>       product: DWC OTG Controller<br>       vendor: Linux 3.10.108 dwc_otg_hcd<br>       physical id: 2<br>       bus info: usb@1<br>       logical name: usb1<br>       version: 3.10<br>       capabilities: usb-2.00<br>       configuration: driver&#x3D;hub slots&#x3D;1 speed&#x3D;480Mbit&#x2F;s<br>     *-usb<br>          description: Keyboard<br>          product: USB Keyboard<br>          vendor: SEM<br>          physical id: 1<br>          bus info: usb@1:1<br>          version: 1.10<br>          capabilities: usb-1.10<br>          configuration: driver&#x3D;usbhid maxpower&#x3D;98mA speed&#x3D;2Mbit&#x2F;s<br>  *-network<br>       description: Ethernet interface<br>       physical id: 3<br>       logical name: eth0<br>       serial: b0:d5:9d:d6:5a:ee<br>       size: 1Gbit&#x2F;s<br>       capacity: 1Gbit&#x2F;s<br>       capabilities: ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation<br>       configuration: autonegotiation&#x3D;on broadcast&#x3D;yes driver&#x3D;meson-eth duplex&#x3D;full ip&#x3D;192.168.3.111 link&#x3D;yes multicast&#x3D;yes port&#x3D;MII speed&#x3D;1Gbit&#x2F;s</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%A1%AC%E7%9B%98%E4%B8%8E%E8%87%AA%E5%BB%BA%E5%B8%B8%E7%94%A8%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%88%A0%E5%91%BD%E4%BB%A4/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%A1%AC%E7%9B%98%E4%B8%8E%E8%87%AA%E5%BB%BA%E5%B8%B8%E7%94%A8%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%88%A0%E5%91%BD%E4%BB%A4/" itemprop="url">格式化硬盘与自建常用创建与删命令</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>fdisk -l 命令查看刚刚接入USB的U盘&#x2F;硬盘并记下其设备名称<br>查看挂载用这个下面<br>df -h</p>
+<ol start="2">
+<li>mkfs.ext4 —— 创建ext4文件系统硬盘格式化。</li>
+</ol>
+<p>mkfs.FAT32 &#x2F;dev&#x2F;sda1  （这是我的分区U盘名&#x2F;dev&#x2F;mmcblk1p1）<br>mkfs.ext4 &#x2F;dev&#x2F;mmcblk0p1<br>按Y同意<br>出现这句完成</p>
+<p>Writing superblocks and filesystem accounting information:<br>done<br>要等几分钟</p>
+<p>四、用blkid 命令查看所需要挂载硬盘的UUID，并复制保存UUID。例如下图：<br>blkid &#x2F;dev&#x2F;sda1<br>这是我的<br>UUID&#x3D;”7721c00b-5273-4d10-9763-b5de02537659” TYPE&#x3D;”ext4”<br>      F230-4E90” BLOCK_SIZE&#x3D;”512” TYPE&#x3D;”vfat” PARTUUID&#x3D;<br>利用cd命令切换到要挂载的目标目录，然后利用mkdir命令创建挂载目录 ，也可以使用WinSCP软件直接目标目录下创建挂载目录。例如下图：<br>进入mnt目录下创建一个文件夹，权根0755</p>
+<p>六、打开&#x2F;etc&#x2F;fstab文件，在最后行追加（记住是追加，原有的内容不要动）下面内容：<br>mnt下面建一个libaob2 新建的目录<br>UUID&#x3D;0f54da88-7f6d-4f41-9069-8b9ce53c045f   &#x2F;mnt&#x2F;libao2&#x2F;   ext4    defaults    0 0</p>
+<p>reboot重启后会看到mnt下面建一个了一个libaob2 新建的目录了</p>
+<p>创建文件夹命令<br>mkdir</p>
+<h2 id="例-：在桌-下-创建以“demo”命名的-件夹，并且给-件夹赋权限，权限为123。mkdir-123-桌面-demo"><a href="#例-：在桌-下-创建以“demo”命名的-件夹，并且给-件夹赋权限，权限为123。mkdir-123-桌面-demo" class="headerlink" title="例?：在桌?下?创建以“demo”命名的?件夹，并且给?件夹赋权限，权限为123。mkdir  123  桌面&#x2F;demo"></a>例?：在桌?下?创建以“demo”命名的?件夹，并且给?件夹赋权限，权限为123。<br>mkdir  123  桌面&#x2F;demo</h2><p>在当前目录创建libao3文件夹<br>mkdir  libao3<br>CD到指定目录</p>
+<p>cd 命令切换目录只需在命令后加目录名称便可。例如：测试</p>
+<h2 id="ln-s-mnt-libao2-www-www-软连我的应该是cd-mnt-libao2-上面去libao2文件夹下面去libao3文件夹cd-mnt-libao2-libao3-创建和删软链-ln-–s-mnt-libao2-www-wwww-说明：即在-mnt-libao2-www-在根录下建一个www的快捷-式-rm-–rf-www说明：删除软连接-rm-–rf-www-说明：删除www录下的-件"><a href="#ln-s-mnt-libao2-www-www-软连我的应该是cd-mnt-libao2-上面去libao2文件夹下面去libao3文件夹cd-mnt-libao2-libao3-创建和删软链-ln-–s-mnt-libao2-www-wwww-说明：即在-mnt-libao2-www-在根录下建一个www的快捷-式-rm-–rf-www说明：删除软连接-rm-–rf-www-说明：删除www录下的-件" class="headerlink" title="ln-s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;www 软连我的应该是cd &#x2F;mnt&#x2F;libao2&#x2F;上面去libao2文件夹下面去libao3文件夹cd &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;创建和删软链#ln –s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;wwww&#x2F;&#x2F;说明：即在&#x2F;mnt&#x2F;libao2&#x2F;www&#x2F;在根录下建一个www的快捷?式#rm –rf www说明：删除软连接++++++++++++++++++++++++++++++++#rm –rf www&#x2F;说明：删除www录下的?件"></a>ln-s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;www 软连<br>我的应该是<br>cd &#x2F;mnt&#x2F;libao2&#x2F;<br>上面去libao2文件夹<br>下面去libao3文件夹<br>cd &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;<br>创建和删软链<br>#ln –s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;wwww&#x2F;&#x2F;<br>说明：即在&#x2F;mnt&#x2F;libao2&#x2F;www&#x2F;在根录下建一个www的快捷?式<br>#rm –rf www<br>说明：删除软连接<br>++++++++++++++++++++++++++++++++<br>#rm –rf www&#x2F;<br>说明：删除www录下的?件</h2><p>开启权限命令<br>例如我要开启libao2目录的权限为0777的就下面操作</p>
+<p>chmod -R 777 &#x2F;mnt&#x2F;libao2&#x2F;</p>
+<h2 id="删除件夹【rm】"><a href="#删除件夹【rm】" class="headerlink" title="删除件夹【rm】"></a>删除件夹【rm】</h2><p>rm -rf &#x2F;mnt&#x2F;libao2&#x2F;libao3</p>
+<p>将会删除&#x2F;mnt&#x2F;libao2&#x2F;libao3目录以及其下所有文件、文件夹</p>
+<p>rm file &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;123.txt<br>将会删除 &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;123.txt文件</p>
+<p>八、重启玩客云</p>
+<p>使用命令reboot 重启一次系统，如果&#x2F;mnt&#x2F;diskyingpan目录下有一个lost+found目录说明挂载成功，那么挂载USB硬盘的工作就顺利完成。瓿伞 </p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%88%B7casaos%E5%9B%BE%E6%96%87/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%88%B7casaos%E5%9B%BE%E6%96%87/" itemprop="url">玩客云刷casaos图文</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>玩客云刷casaos图文 教程<br>玩客云armbian固件下载地址：<a target="_blank" rel="noopener" href="https://github.com/hzyitc/armbian-onecloud/releases">https://github.com/hzyitc/armbian-onecloud/releases</a><br>需要注意的是，casaos还不能支持最新版的底包，所以我们需要下载之前的老版本。在下载页面上往下拉，找到6.1.9这个版本。我们需要去下载带mini和burn字样的刷机包。mini代表最小安装包，burn代表线刷包。</p>
+<p>检查时间<br>date -R</p>
+<p>如果时区及时间不对。执行下面的操作<br>cp &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai  &#x2F;etc&#x2F;localtime</p>
+<p>再次检查时间<br>date -R</p>
+<p>接下来是添加系统的软件源，这样可以提高安装成功率。输入：<br>nano &#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>然后按方向键到最后在空白处添加以下代码：<br>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-updates main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-updates-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-updates-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-updates main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-backports main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-backports-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-backports-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye-backports main contrib non-free</h1><p>deb <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian-security">https://mirrors.tuna.tsinghua.edu.cn/debian-security</a> bullseye-security main contrib non-free</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-security-bullseye-security-main-contrib-non-free"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-security-bullseye-security-main-contrib-non-free" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian-security">https://mirrors.tuna.tsinghua.edu.cn/debian-security</a> bullseye-security main contrib non-free</h1><p>然后就是安装casaos系统了，casaos的安装只要这一条代码就可以<br>wget -qO- <a target="_blank" rel="noopener" href="https://get.casaos.io/">https://get.casaos.io</a> | bash</p>
+<p>如果你的网络不好，可以执行这个国内源代码试试（注意使用了国内源的一键安装以后是无法自动升级casaos系统的）：<br>curl -fsSL cn-get.casaos.io | bash</p>
+<p>小贴士：有很多小伙伴会卡在安装这步，主要还是网络问题。因为casaos的软件源在国外，大家有加速环境的最好能用上。<br>另外，还总结了一些方法：<br>换源是可以把原先的软件源用“#”注释掉。比如</p>
+<h1 id="deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free-1"><a href="#deb-src-https-mirrors-tuna-tsinghua-edu-cn-debian-bullseye-main-contrib-non-free-1" class="headerlink" title="deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free"></a>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/debian/">https://mirrors.tuna.tsinghua.edu.cn/debian/</a> bullseye main contrib non-free</h1><p>这句前面加了“#”，系统就不会运行这句代码了。同样地可以把复制粘贴的新代码去掉注释，这样就会有更多的新软件源。<br>另外有的网友不添加软件源反而安装成功了，大家也可以试试。（我怀疑是网络原因，与换源无关）<br>最后还有小伙伴说他用最新版的底包刷机就成功了，我之前刷机的时候是不成功的。也许是casaos更新了版本的缘故。</p>
+<p>安装好以后，在ssh里运行这一段命令，安装alist的docker镜像：<br>docker run -d –restart&#x3D;always -v &#x2F;etc&#x2F;alist:&#x2F;opt&#x2F;alist&#x2F;data -p 5244:5244 -e PUID&#x3D;0 -e PGID&#x3D;0 -e UMASK&#x3D;022 –name&#x3D;”alist” xhofe&#x2F;alist:latest</p>
+<p>在运行这个命令来查看alist：<br>docker exec -it alist .&#x2F;alist admin<br>docker exec -it alist .&#x2F;alist admin random</p>
+<p>启动进程<br>&#x2F;etc&#x2F;init.d&#x2F;dockerd start</p>
+<p>我装成功是这样:<br>docker stop alist<br>docker rm alist</p>
+<p>docker pull xhofe&#x2F;alist:latest</p>
+<p>docker run -d –restart&#x3D;always -v &#x2F;etc&#x2F;alist:&#x2F;opt&#x2F;alist&#x2F;data -p 5244:5244 -e PUID&#x3D;0 -e PGID&#x3D;0 -e UMASK&#x3D;022 –name&#x3D;”alist” xhofe&#x2F;alist:latest</p>
+<p>docker logs alist</p>
+<p>docker exec -it alist &#x2F;bin&#x2F;bash</p>
+<p>alist 的帮助文档<br><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/">https://alist.nn.ci/zh/guide/</a></p>
+<p>玩客云docker下刷openwrt</p>
+<p>docker network create -d macvlan –subnet&#x3D;192.168.3.0&#x2F;24 –gateway&#x3D;192.168.3.1 -o parent&#x3D;eth0 macnet</p>
+<p>docker import &#x2F;openwrt-at91-sama5-microchip_sama5d3-xplained-rootfs.tar.gz lean_OBlB</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+
+<div id="index" class="index page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/27/%E7%8E%A9%E5%AE%A2%E4%BA%91openwrt%E7%A8%B3%E5%AE%9A%E9%AB%98%E5%A4%A7%E5%85%A8%E8%AE%BE%E7%BD%AE%E9%9D%99IP/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/27/%E7%8E%A9%E5%AE%A2%E4%BA%91openwrt%E7%A8%B3%E5%AE%9A%E9%AB%98%E5%A4%A7%E5%85%A8%E8%AE%BE%E7%BD%AE%E9%9D%99IP/" itemprop="url">玩客云openwrt稳定高大全设置静IP</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-27T10:00:00+08:00">2023年09月27日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>##首先下载刷机包<br><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1p-zCPYOs7OuM_-BV29N0tw?pwd=qqbk">百度网盘下载地址</a><br>提取码：qqbk</p>
+<p>##再下载刷机软件<br><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Mwct4aoXwThZ0gWX-gROMg?pwd=2yly">百度网盘下载地址</a><br>提取码：2yly</p>
+<p>##刷机过程不演示，自已百度查找方法</p>
+<p>#玩客云高大全直刷，全分区去校验，，登陆帐号：root 密码为：root，主路由ip10.0.0.1需网线直连电脑配置旁路由IP，用自带的一键设置就行，<br>建议:刷主路由固件，直连电脑重新在管理页面配置旁路由</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--------------------------------------------</span><br><span class="line">首先登陆10.0.0.1路由器后台，找到网口-LAN口设置，先改成DHCP客户端，让IP自动获取，然后保存并重启路由器。再把线插在主路由上，我的路由是192.168.3.1,登陆主路由看新进入的玩客云路由器IP,例如我的是192.168.3.34</span><br><span class="line">记陆好IP后，用SSH链接上，不懂怎样用SSH的可以查度查，最好用第三方软件，如果不想安装软件可以在电脑文件浏览器输入CMD回车</span><br><span class="line">然后软件</span><br></pre></td></tr></table></figure>
+<p>ssh <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#x40;&#x31;&#x39;&#50;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#51;&#x2e;&#51;&#x34;">&#x72;&#111;&#x6f;&#x74;&#x40;&#x31;&#x39;&#50;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#51;&#x2e;&#51;&#x34;</a></p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 回车,提示输入yes再回车，然后提示输入(password)密码输入 root再回车</span><br><span class="line"> -----------------------------------------------------------------------</span><br><span class="line">                OpenWrt 08.24.2023 by keai</span><br><span class="line">         _________________________________________</span><br><span class="line"></span><br><span class="line">系统负载:  0.29 0.25 0.22       运行时间:  33 min</span><br><span class="line">内存已用:  23 % of 747MB        IP  地址:  192.168.3.34</span><br><span class="line">系统存储:  13% of 6.7G          CPU 信息: ARMv7 Processor rev 1</span><br><span class="line"></span><br><span class="line">[root@OpenWrt:04:54 PM ~] #</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">出现上面界面就是登陆成功了！</span><br><span class="line">首先先修改网卡地址</span><br></pre></td></tr></table></figure>
+<p> vim &#x2F;etc&#x2F;config&#x2F;network</p>
+<pre><code>这时你会看到出现
+config interface &#39;loopback&#39;
+       option device &#39;lo&#39;
+       option proto &#39;static&#39;
+       option ipaddr &#39;127.0.0.1&#39;
+       option netmask &#39;255.0.0.0&#39;
+
+config globals &#39;globals&#39;
+       option ula_prefix &#39;fd6b:6253:662c::/48&#39;
+       option packet_steering &#39;1&#39;
+
+config device
+       option name &#39;br-lan&#39;
+       option type &#39;bridge&#39;
+       list ports &#39;eth0&#39;
+
+config interface &#39;lan&#39;
+       option device &#39;br-lan&#39;
+       option proto &#39;dhcp&#39;
+
+config interface &#39;vpn0&#39;
+       option device &#39;tun0&#39;
+       option proto &#39;none&#39;
+
+config interface &#39;ipsec_server&#39;
+       option device &#39;ipsec0&#39;
+       option proto &#39;static&#39;
+       option ipaddr &#39;192.168.100.1&#39;
+-----------------------------------------
+按英文字母i可以进入修改模式，用第三方软件例如：FinalShell 可以复制粘贴的,我的修改就是把MAC地址固定于1A:AA:A5:61:7B:7D，其它没什么改动的
+改完后按键盘Esc键 ，再按Shift加：号键，再你w-q回车，退出并保存
+
+       我的修改成这下面这样
+       config interface &#39;loopback&#39;
+       option proto &#39;static&#39;
+       option ipaddr &#39;127.0.0.1&#39;
+       option netmask &#39;255.0.0.0&#39;
+       option device &#39;lo&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config globals &#39;globals&#39;
+       option ula_prefix &#39;fd7b:ad35:5cfd::/48&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config interface &#39;lan&#39;
+       option proto &#39;dhcp&#39;
+       option device &#39;br-lan&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config interface &#39;docker&#39;
+       option device &#39;docker0&#39;
+       option proto &#39;none&#39;
+       option auto &#39;0&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+
+config device
+       option type &#39;bridge&#39;
+       option name &#39;docker0&#39;
+       option macaddr &#39;1A:AA:A5:61:7B:7D&#39;
+       
+       然后重启网络
+```		
+/etc/init.d/network restart
+```			
+这时登陆路由器看MAc：1A:AA:A5:61:7B:7D的设备就上线了，你这个对应路由器的IP地址也会永远固定这个，如果你想改变IP地址，就在主路由上设置，一般路由器都是找到网络设置，静态 IP 地址绑定列表，找到1A:AA:A5:61:7B:7D这个对应的名称，绑定就可以，因为这个玩客云路由器不能用静态功能，我试过，每次用静态功能就上不了网，例如科学上网等等！！！
+</code></pre>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/25/OpenWrt%E8%BD%AF%E8%B7%AF%E7%94%B1%E4%BC%98%E9%80%89IP/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/25/OpenWrt%E8%BD%AF%E8%B7%AF%E7%94%B1%E4%BC%98%E9%80%89IP/" itemprop="url">OpenWrt软路由优选IP</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-25T21:00:00+08:00">2023年09月25日 21:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>优选IP天花板教程，小白懒人特供版！openwrt软路由优选IP高度自定义一键脚本，支持优选官方IP、反代IP、13个端口随便选、有无域名都支持TG通知，演示CF-workers-vless与VPS-XUI-vmess节点进行优选IP测试，让你了解优选官方IP与反代IP的各自特点，一切近在你掌握中</p>
+<h2 id="一键运行命令"><a href="#一键运行命令" class="headerlink" title="一键运行命令"></a>一键运行命令</h2><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -ksSL https://gitlab.com/rwkgyg/cdnopw/raw/main/cdnopw.sh -o cdnopw.sh &amp;&amp; bash cdnopw.sh</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/yonggekkk/openwrt_win64-ddns-cdnip">甬哥侃侃侃原博客</a></p>
+<p>1.安装&#x2F;重置脚本<br>2.更改各项参数配置<br>3.直接运行一次已安装脚本<br>4.修复并卸载<br>0.退出<br>请选择: 1</p>
+<p>1：域名解析推送模式（需要域名，推荐）<br>2：IP直接推送模式（无需域名）<br>请选择: 1</p>
+<p>选择优选IP分配到域名解析的方案<br>1：多个优选IP解析到一个域名（推荐）<br>2：每个优选IP解析到每个域名<br>请选择: 1</p>
+<p>请输入Cloudflare解析好的一级域名:<br>请输入二级域自定义的名称: </p>
+<p>使用哪种优选IP方式<br>1：Cloudflare CDN官方IP（支持IPV4与IPV6）<br>2：Cloudflare CDN反代IP（仅支持ipv4）<br>请选择(回车默认为官方IP): 2</p>
+<p>开启tls的端口：443、8443、2053、2083、2087、2096<br>关闭tls的端口：80、8080、8880、2052、2082、2086、2095<br>请选择以上13个端口之一：8080</p>
+<p>是否测速？（选择 1 表示测速，回车默认关闭测速）<br>请选择: </p>
+<p>请输入测试线程数量【不懂就回车，默认200 最多1000】: </p>
+<p>请输入测试并显示的IP数量【不懂就回车，默认10】: </p>
+<p>请输入平均延迟上限【不懂就回车，默认250】: </p>
+<p>请输入平均延迟下限【不懂就回车，默认40】: </p>
+<p>请输入下载速度下限【不懂就回车，默认5】: </p>
+<p>输入使用的代理插件【 1代表passwall 2代表passwall2 3代表SSRPlus 4代表clash 5代表openclash 6代表bypass 7代表v2raya 】<br>请输入一个数值（1-7）: 3</p>
+<p>请输入Cloudflare解析好的域名（二级域名格式）<br>例：1.test.eu.org空格2.test.eu.org空格3.test.eu.org…………以此类推，多域名之间有空格<br>请输入域名: </p>
+<p>请输入Cloudflare登录邮箱: 00000000000000000000000000</p>
+<p>请输入Cloudflare域名-概述-区域ID: 00000000000000</p>
+<p>请输入Cloudflare域名-概述-获取您的API令牌-Global API Key: 00000000000000000000000000</p>
+<p>是否启用Telegram机器人通知(回车默认不启用，选择1启用): 1<br>输入Telegram机器人Token: 00000000000000000000000000000<br>输入Telegram机器人用户ID: 000000000000</p>
+<p>是否启用Pushplus微信通知(回车默认不启用，选择1启用):<br>下载更新反代IP库……<br>   -&#x3D;#&#x3D;-   #     #        #<br>Cloudflare账号登陆成功!<br>当前工作模式为ipv4<br>已停止shadowsocksr</p>
+<h1 id="XIU2-CloudflareSpeedTest-v2-2-4"><a href="#XIU2-CloudflareSpeedTest-v2-2-4" class="headerlink" title="XIU2&#x2F;CloudflareSpeedTest v2.2.4"></a>XIU2&#x2F;CloudflareSpeedTest v2.2.4</h1><p>开始延迟测速（模式：TCP，端口：8080，平均延迟上限：250 ms，平均延迟下限：40 ms，丢包几率上限：1.00 )<br>1363 &#x2F; 1363 [————————————————————————————————————————] 可用: 273<br>IP 地址           已发送  已接收  丢包率  平均延迟  下载速度 (MB&#x2F;s)</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88/" itemprop="url">常用命令集合</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>#重启服务器</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Reboot</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>#解释：这个命令用于重新启动服务器，将服务器关机然后再次启动。</p>
+<p>#关闭服务器</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shutdown</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arduino</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -h now</span><br></pre></td></tr></table></figure>
+<p>#解释：这个命令用于立即关闭服务器，即刻停止服务器的运行。</p>
+<p>查看服务器状态</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uptime</span><br></pre></td></tr></table></figure>
+
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br></pre></td></tr></table></figure>
+<p>#释：这个命令用于查看服务器的运行时间和负载。</p>
+<p>查看服务器资源使用情况</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Top</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">css</span><br></pre></td></tr></table></figure>
+
+<p>#释：这个命令用于实时监视服务器的资源使用情况，包括CPU、内存和进程等。</p>
+<p>#看磁盘空间使用情况（df）：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于查看服务器上各个文件系统的磁盘空间使用情况。</p>
+<p>查看内存使用情况</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure>
+<p>#释：这个命令用于查看服务器的内存使用情况，包括空闲内存和已用内存。</p>
+<p>$看网络连接</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tuln</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于查看服务器上的网络连接和端口监听状态。</p>
+<p>#看日志文件（tail）：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 50 /var/log/syslog</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于查看指定日志文件的最后50行日志内容。</p>
+<p>查找文件（find）：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /path/to/search -name &quot;filename&quot;</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于在指定路径下查找文件。</p>
+<p>创建文件夹（mkdir）：</p>
+<h2 id="解释：这个命令用于创建新的文件夹或目录。"><a href="#解释：这个命令用于创建新的文件夹或目录。" class="headerlink" title="解释：这个命令用于创建新的文件夹或目录。"></a>解释：这个命令用于创建新的文件夹或目录。</h2><figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /path/to/directory</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于创建新的文件夹或目录。在to文夹下创建一个directory文件夹</p>
+<p>##复制文件（cp）：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp sourcefile destination</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于复制文件或目录到指定位置。</p>
+<p>##移动文件（mv）：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv sourcefile destination</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于移动文件或目录到指定位置。</p>
+<p>##删除文件（rm）：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm filename</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于删除指定的文件。</p>
+<p>##查看文件内容（cat）：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat filename</span><br></pre></td></tr></table></figure>
+<p>解释：这个命令用于查看文件的内容。</p>
+<p>tail -n 50 &#x2F;var&#x2F;log&#x2F;syslog<br>解释：这个命令用于查看指定日志文件的最后50行日志内容。</p>
+<p>find &#x2F;path&#x2F;to&#x2F;search -name “filename”<br>解释：这个命令用于在指定路径下查找文件。</p>
+<p>mkdir &#x2F;path&#x2F;to&#x2F;directory<br>解释：这个命令用于创建新的文件夹或目录。</p>
+<p>cp sourcefile destination<br>解释：这个命令用于复制文件或目录到指定位置。</p>
+<p>mv sourcefile destination<br>解释：这个命令用于移动文件或目录到指定位置。</p>
+<p>rm filename<br>解释：这个命令用于删除指定的文件。</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C%E6%A0%B7%E6%9D%BF/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C%E6%A0%B7%E6%9D%BF/" itemprop="url">你好世界</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>欢迎来到Hexo！这是您的第一篇文章。检查文档以获取更多信息。如果您在使用 Hexo 时遇到任何问题，可以在故障排除中找到答案，也可以在GitHub上向我提问。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h2 id="创建一个新帖子"><a href="#创建一个新帖子" class="headerlink" title="创建一个新帖子"></a>创建一个新帖子</h2><figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;新文章标题&quot;</span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">写作</a></p>
+<h2 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h2><figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">服务器</a></p>
+<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">生成</a></p>
+<h2 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h2><figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">部署</a></p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E6%B4%BB%E5%88%B0%E8%80%81%E5%AD%A6%E5%88%B0%E8%80%81/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/%E6%B4%BB%E5%88%B0%E8%80%81%E5%AD%A6%E5%88%B0%E8%80%81/" itemprop="url">测试文本</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%94%9F%E6%B4%BB%E5%88%86%E4%BA%AB/" itemprop="url" rel="index"><span itemprop="name">生活分享</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>我的关注推荐<br>换一换<br>书记出席这些活动传递丰富信息<br>1中国男乒人均i人热<br>2一年涨价27% 辣条赢了LV热<br>3亚洲风采 交相辉映<br>4韩国选手输球后疯狂摔拍拒绝握手<br>5刘德华现身华为发布会<br>6李靓蕾发声明反击王力宏<br>7加入“灵修” 他们从裸辞到负债百万<br>8城管被指执法随心所欲 官方辟谣<br>9男孩河床边玩耍发现恐龙脚印</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/docker%E8%AF%B4%E6%98%8E/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/docker%E8%AF%B4%E6%98%8E/" itemprop="url">安装docker说明</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>之前讲过玩客云可以安装armbian与openwrt，但是并没有安装docker，因为玩客云的s905是32位的，可用的docker镜像比较少，所以没有折腾，最近发现了一个刷机即可使用docker的armbian镜像，就玩了一下，可以实现大部分的斐讯n1的功能。</p>
+<p>有了omv5与docker丝毫不逊色N1的玩客云</p>
+<p>让玩客云与N1一样出色不仅要omv还要docker</p>
+<p>可以安装docker的armbian镜像docker_Armbian_20.05.4_Aml-s805_focal_current_5.7.0-rc5<br><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/132mbd05DE9wqYoRiw4dA4Q">https://pan.baidu.com/s/132mbd05DE9wqYoRiw4dA4Q</a><br>提取码：5wxi</p>
+<p>镜像通过写盘工具写到u盘，插入到靠近网口的usb上，插上电源方可加载系统</p>
+<p>第一次启动会很慢，稍安勿躁<br>启动以后，去路由器里拿到ip<br>用ssh工具登录<br>用户名是root<br>密码是1234<br>登录后要求修改root密码<br>输入密码1234<br>然后输入两次新密码，有复杂度要求，数字密码大写特殊符号等，你看着输吧</p>
+<p>设置成功会要求新建用户，这里取消就可以了，不用新用户了</p>
+<p>按ctrl c会中断</p>
+<p>这时候系统还是在u盘了的</p>
+<p>cd &#x2F;boot&#x2F;install<br>.&#x2F;install.sh<br>会把系统写入到emmc中</p>
+<p>等待写入完毕会自动退出<br>拔下u盘，拔电重启</p>
+<p>耐心等待启动完毕，ip大概率还是之前的ip，如果登陆不了就去路由器里确认。</p>
+<p>再次登录成功，系统就刷好了</p>
+<h2 id="安装samba实现共享"><a href="#安装samba实现共享" class="headerlink" title="安装samba实现共享"></a>安装samba实现共享</h2><p>插上移动硬盘或者u盘，我这里是一个u盘</p>
+<p>需要分区格式化，我这里就不演示了，用fdisk或者parted分区，挂载</p>
+<p>我挂在到了&#x2F;data目录上</p>
+<p>安装samba</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt update </span><br><span class="line">apt install samba</span><br><span class="line"><span class="comment"># 设置用户</span></span><br><span class="line">useradd zhangxiaoqi</span><br><span class="line">smbpasswd -a zhangxiaoqi</span><br><span class="line"><span class="comment"># 123456</span></span><br></pre></td></tr></table></figure>
+
+<p>配置共享的目录<br>nano  &#x2F;etc&#x2F;samba&#x2F;smb.conf</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[wkyshare]</span><br><span class="line">   comment = wky shares</span><br><span class="line">   path = /data</span><br><span class="line">   create mask = 0664</span><br><span class="line">   directory mask = 0775</span><br><span class="line">   <span class="built_in">read</span> only = No</span><br><span class="line">   valid <span class="built_in">users</span> = zhangxiaoqi</span><br></pre></td></tr></table></figure>
+
+<p>重启服务</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart smbd</span><br><span class="line">systemctl <span class="built_in">enable</span> smbd</span><br></pre></td></tr></table></figure>
+<h1 id="可以在局域网的win机器访问"><a href="#可以在局域网的win机器访问" class="headerlink" title="可以在局域网的win机器访问"></a>可以在局域网的win机器访问</h1><h1 id="ip-查看共享是否正常"><a href="#ip-查看共享是否正常" class="headerlink" title="\ip 查看共享是否正常"></a>\ip 查看共享是否正常</h1><p>就可以了安装docker</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install docker.io</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<h2 id="下面是必装镜像"><a href="#下面是必装镜像" class="headerlink" title="下面是必装镜像"></a>下面是必装镜像</h2><p>安装portainer</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 8000:8000 \</span><br><span class="line">  -p 9000:9000 \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  -v /data/docker/portainer/data:/data \</span><br><span class="line">  --name=portainer \</span><br><span class="line">  --restart=always \</span><br><span class="line">  portainer/portainer-ce</span><br></pre></td></tr></table></figure>
+
+<p>安装openwrt</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull dreamwsbg/openwrt:7.0</span><br></pre></td></tr></table></figure>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=&quot;openwrt&quot; --restart unless-stopped --network macnet --privileged dreamwsbg/openwrt:7.0 /sbin/init</span><br></pre></td></tr></table></figure>
+
+<figure class="hljs highlight docker"><figcaption><span>pull virking/openwrt:20.04</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip link set eth0 promisc on</span><br><span class="line">docker network create -d macvlan --subnet=<span class="number">192.168</span>.<span class="number">188.0</span>/<span class="number">24</span> --gateway=<span class="number">192.168</span>.<span class="number">188.1</span> -o parent=eth0 macnet</span><br></pre></td></tr></table></figure>
+<p>启动一个openwrt容器<br>docker run -i -t -d –name&#x3D;openwrt –restart&#x3D;always –network&#x3D;macnet –privileged&#x3D;true virking&#x2F;openwrt:20.04 &#x2F;sbin&#x2F;init<br>docker run -d –name&#x3D;”openwrt” –restart unless-stopped –network macnet –privileged dreamwsbg&#x2F;openwrt:7.0 &#x2F;sbin&#x2F;init<br>编辑网卡<br>vi &#x2F;etc&#x2F;config&#x2F;network<br>内容如下，注意修改网段</p>
+<p>config interface ‘loopback’<br>        option ifname ‘lo’<br>        option proto ‘static’<br>        option ipaddr ‘127.0.0.1’<br>        option netmask ‘255.0.0.0’</p>
+<p>config globals ‘globals’<br>        option ula_prefix ‘fdd3:60d7:a044::&#x2F;48’</p>
+<p>config interface ‘lan’<br>        option type ‘bridge’<br>        option ifname ‘eth0’<br>        option proto ‘static’<br>        option ipaddr ‘192.168.188.254’ #openwrt的IP地址，可自定义网段内任意IP，不发生冲突即可<br>        option netmask ‘255.255.255.0’<br>        option gateway ‘192.168.188.1’ #填写主路由的IP地址<br>        option dns ‘192.168.188.1’ #填写主路由的IP地址</p>
+<p>config interface ‘vpn0’<br>        option ifname ‘tun0’<br>        option proto ‘none’</p>
+<p>重启玩客云等待openwrt启动后<br>账密：root-password</p>
+<p>回到玩客云shell<br> &#x2F;etc&#x2F;network&#x2F;interfaces &#x2F;etc&#x2F;network&#x2F;interfaces.bak<br> vi &#x2F;etc&#x2F;network&#x2F;interfaces</p>
+<p>添加如下内容<br>auto macvlan<br>iface macvlan inet static<br>  address 192.168.188.8<br>  netmask 255.255.255.0<br>  gateway 192.168.188.1<br>  dns-nameservers 192.168.188.1<br>  pre-up ip link add macvlan link eth0 type macvlan mode bridge<br>  post-down ip link del macvlan link eth0 type macvlan mode bridge</p>
+<p>Bushu transmission</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker run \</span><br><span class="line">  -d \</span><br><span class="line">  --name=transmission \</span><br><span class="line">  -e USERNAME=admin \</span><br><span class="line">  -e PASSWORD=admin \</span><br><span class="line">  -e PUID=1000 \</span><br><span class="line">  -e PGID=1000 \</span><br><span class="line">  -p 9091:9091 \</span><br><span class="line">  -p 51413:51413 \</span><br><span class="line">  -p 51413:51413/udp \</span><br><span class="line">  -v /data/transmission/config:/config \</span><br><span class="line">  -v /data:/downloads \</span><br><span class="line">  -v /data/transmission/watch:/watch \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">lsioarmhf/transmission</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>给transmission安装界面<br>到docker的shell中<br>wget <a target="_blank" rel="noopener" href="https://gitee.com/culturist/transmission-web-control/raw/master/release/install-tr-control-gitee.sh">https://gitee.com/culturist/transmission-web-control/raw/master/release/install-tr-control-gitee.sh</a><br>bash install-tr-control-cn.sh</p>
+<p>网盘nextcloud</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name nextcloud \</span><br><span class="line">-p 8085:80 \</span><br><span class="line">-v /data/docker/nextcloud/html:/var/www/html \</span><br><span class="line">-e TZ=Asia/Shanghai \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">nextcloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>blog</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80:80 --name typecho -v <span class="string">&quot;/data/tyepcho&quot;</span>:/var/www/html yangxuan8282/typecho:php-arm</span><br></pre></td></tr></table></figure>
+
+<p>aria2</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --name aria2-pro \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    --log-opt max-size=1m \</span><br><span class="line">    --network host \</span><br><span class="line">    -e PUID=1000 \</span><br><span class="line">    -e PGID=1000 \</span><br><span class="line">    -e RPC_SECRET=12345 \</span><br><span class="line">    -e RPC_PORT=6800 \</span><br><span class="line">    -e LISTEN_PORT=6888 \</span><br><span class="line">    -v /data/docker/aria2/config:/config \</span><br><span class="line">    -v /data/downloads:/downloads \</span><br><span class="line">    p3terx/aria2-pro</span><br></pre></td></tr></table></figure>
+
+<p>浏览器安装插件连接 6800端口即可</p>
+<p>web ui</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+<p>同步工具</p>
+<p>verysync</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--restart=unless-stopped \</span><br><span class="line">--name verysync \</span><br><span class="line">-v /data/verysync:/data \</span><br><span class="line">-p 8886:8886 \</span><br><span class="line">unwenliu/verysync:armv7</span><br></pre></td></tr></table></figure>
+
+<p>qbittorrent</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name=qbittorrent \</span><br><span class="line">  -e PUID=1000 \</span><br><span class="line">  -e PGID=1000 \</span><br><span class="line">  -e TZ=Aisa/Shanghai \</span><br><span class="line">  -e WEBUI_PORT=8080 \</span><br><span class="line">  --network host \</span><br><span class="line">  -v /data/docker/qb/config:/config \</span><br><span class="line">  -v /data/qb_downloads:/downloads \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  ghcr.io/linuxserver/qbittorrent</span><br></pre></td></tr></table></figure>
+
+<p>有了docker，玩客云确实一个不错的nas了</p>
+<p>相比直接安装openwrt，可用性会高很多，也经得起折腾</p>
+<p>希望大家不要瞧不起玩客云，哈</p>
+<p>玩客云的终点就在这里了，已经是极限了</p>
+<p>本期视频就到这里了，我是张大七，我们下期见。</p>
+<p>docker network create -d macvlan –subnet&#x3D;192.168.3.0&#x2F;24 –gateway&#x3D;192.168.3.1 -o parent&#x3D;eth0 macnet</p>
+<p>docker import &#x2F;openwrt-at91-sama5-microchip_sama5d3-xplained-rootfs.tar.gz lean_OBlB</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/warp%E5%A4%9A%E5%8A%9F%E8%83%BD%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%ACCF/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/warp%E5%A4%9A%E5%8A%9F%E8%83%BD%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%ACCF/" itemprop="url">warp多功能一键脚本CF</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>更多信息: <a target="_blank" rel="noopener" href="https://github.com/yonggekkk/warp-yg">勇哥项目</a></p>
+<h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><p>#相关说明及注意点请查看warp系列视频说明 更新日志<br>一、WARP多功能一键脚本，支持纯IPV4、纯IPV6的VPS直接安装，主流linux系统均支持</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(wget -qO- https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh 2&gt; /dev/null)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh)</span><br></pre></td></tr></table></figure>
+
+<p>1、强制终止warp-go：kill -15 $(pgrep warp-go)<br>2、终止wgcf：systemctl stop wg-quick@wgcf</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://gitlab.com/rwkgyg/CFwarp/raw/main/point/endip.sh -o endip.sh &amp;&amp; chmod +x endip.sh &amp;&amp; ./endip.sh</span><br></pre></td></tr></table></figure>
+<p>#手机上命令IP命令</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://gitlab.com/rwkgyg/CFwarp/raw/main/point/cfip.sh -o cfip.sh &amp;&amp; chmod +x cfip.sh &amp;&amp; bash cfip.sh</span><br></pre></td></tr></table></figure>
+
+<p>#手机上命令域名命令</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://gitlab.com/rwkgyg/CFwarp/raw/main/point/CFcdnym.sh -o CFcdnym.sh &amp;&amp; chmod +x CFcdnym.sh &amp;&amp; bash CFcdnym.sh</span><br></pre></td></tr></table></figure>
+
+<p>#<a target="_blank" rel="noopener" href="https://github.com/termux/termux-app/releases">安卓termux下载地址</a> ，依赖升级代码：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg upgrade</span><br></pre></td></tr></table></figure>
+
+<p>#苹果ios平台 ish客户端，依赖升级代码：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apk add openssh curl bash</span><br></pre></td></tr></table></figure>
+<p>#二、多平台优选WARP对端IP + 无限生成WARP-Wireguard配置 一键脚本，建议苹果手机与安卓手机在本地网络使用</p>
+<pre><code class="bash">
+三、Windows平台warp官方客户端优选对端IP应用程序
+注意：默认只能在C盘或者桌面操作
+
+使用方法：解压下载的（WIN端warp自选IP(手动+自动).zip）文件，参考使用方法及视频教程
+
+以上脚本源码备份[Gitlab地址](https://gitlab.com/rwkgyg/CFwarp）)
+感谢WGCF源项目代码地址：https://github.com/ViRb3/wgcf
+感谢CoiaPrant，WARP-GO源项目代码地址：https://gitlab.com/ProjectWARP/warp-go
+相关功能参考来源： [P3terx](https://github.com/P3TERX/warp.sh)、[fscarmen](https://github.com/fscarmen/warp)、[热心的CF网友](https://github.com/badafans)提供的warp endpoint优选IP脚本及注册程序
+</code></pre>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/IP%E5%9C%B0%E5%9D%80/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/IP%E5%9C%B0%E5%9D%80/" itemprop="url">IP地址</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>config interface ‘loopback’<br>        option device ‘lo’<br>        option proto ‘static’<br>        option ipaddr ‘127.0.0.1’<br>        option netmask ‘255.0.0.0’</p>
+<p>config globals ‘globals’<br>        option ula_prefix ‘fd29:fdef:22b9::&#x2F;48’<br>        option packet_steering ‘1’</p>
+<p>config device<br>        option name ‘br-lan’<br>        option type ‘bridge’<br>        list ports ‘eth0’</p>
+<p>config interface ‘lan’<br>        option device ‘br-lan’<br>        option proto ‘static’<br>        option ipaddr ‘192.168.3.202’<br>        option netmask ‘255.255.255.0’<br>        option ip6assign ‘60’<br>        option gateway ‘192.168.3.1’<br>~<br>~<br>~</p>
+<p>玩客云路由器<br>0 Kbps 0 Kbps<br>IP 地址: 192.168.3.202 MAC 地址: 02:42:C0:A8:03:02</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/docker%E8%AF%B4%E6%98%8E1/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/docker%E8%AF%B4%E6%98%8E1/" itemprop="url">docker说明1</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>之前讲过玩客云可以安装armbian与openwrt，但是并没有安装docker，因为玩客云的s905是32位的，可用的docker镜像比较少，所以没有折腾，最近发现了一个刷机即可使用docker的armbian镜像，就玩了一下，可以实现大部分的斐讯n1的功能。</p>
+<p>有了omv5与docker丝毫不逊色N1的玩客云</p>
+<p>让玩客云与N1一样出色不仅要omv还要docker</p>
+<p>可以安装docker的armbian镜像docker_Armbian_20.05.4_Aml-s805_focal_current_5.7.0-rc5<br><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/132mbd05DE9wqYoRiw4dA4Q">https://pan.baidu.com/s/132mbd05DE9wqYoRiw4dA4Q</a><br>提取码：5wxi</p>
+<p>镜像通过写盘工具写到u盘，插入到靠近网口的usb上，插上电源方可加载系统</p>
+<p>第一次启动会很慢，稍安勿躁<br>启动以后，去路由器里拿到ip<br>用ssh工具登录<br>用户名是root<br>密码是1234<br>登录后要求修改root密码<br>输入密码1234<br>然后输入两次新密码，有复杂度要求，数字密码大写特殊符号等，你看着输吧</p>
+<p>设置成功会要求新建用户，这里取消就可以了，不用新用户了</p>
+<p>按ctrl c会中断</p>
+<p>这时候系统还是在u盘了的</p>
+<p>cd &#x2F;boot&#x2F;install<br>.&#x2F;install.sh<br>会把系统写入到emmc中</p>
+<p>等待写入完毕会自动退出<br>拔下u盘，拔电重启</p>
+<p>耐心等待启动完毕，ip大概率还是之前的ip，如果登陆不了就去路由器里确认。</p>
+<p>再次登录成功，系统就刷好了</p>
+<h2 id="安装samba实现共享"><a href="#安装samba实现共享" class="headerlink" title="安装samba实现共享"></a>安装samba实现共享</h2><p>插上移动硬盘或者u盘，我这里是一个u盘</p>
+<p>需要分区格式化，我这里就不演示了，用fdisk或者parted分区，挂载</p>
+<p>我挂在到了&#x2F;data目录上</p>
+<p>安装samba</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt update </span><br><span class="line">apt install samba</span><br><span class="line"><span class="comment"># 设置用户</span></span><br><span class="line">useradd zhangxiaoqi</span><br><span class="line">smbpasswd -a zhangxiaoqi</span><br><span class="line"><span class="comment"># 123456</span></span><br></pre></td></tr></table></figure>
+
+<p>配置共享的目录<br>nano  &#x2F;etc&#x2F;samba&#x2F;smb.conf</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[wkyshare]</span><br><span class="line">   comment = wky shares</span><br><span class="line">   path = /data</span><br><span class="line">   create mask = 0664</span><br><span class="line">   directory mask = 0775</span><br><span class="line">   <span class="built_in">read</span> only = No</span><br><span class="line">   valid <span class="built_in">users</span> = zhangxiaoqi</span><br></pre></td></tr></table></figure>
+
+<p>重启服务</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart smbd</span><br><span class="line">systemctl <span class="built_in">enable</span> smbd</span><br><span class="line"><span class="comment"># 可以在局域网的win机器访问</span></span><br><span class="line"><span class="comment"># \\ip 查看共享是否正常</span></span><br></pre></td></tr></table></figure>
+
+<p>就可以了安装docker</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install docker.io</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<h2 id="下面是必装镜像"><a href="#下面是必装镜像" class="headerlink" title="下面是必装镜像"></a>下面是必装镜像</h2><p>安装portainer</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 8000:8000 \</span><br><span class="line">  -p 9000:9000 \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  -v /data/docker/portainer/data:/data \</span><br><span class="line">  --name=portainer \</span><br><span class="line">  --restart=always \</span><br><span class="line">  portainer/portainer-ce</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>安装openwrt<br>docker pull dreamwsbg&#x2F;openwrt:7.0<br>docker run -d –name&#x3D;”openwrt” –restart unless-stopped –network macnet –privileged dreamwsbg&#x2F;openwrt:7.0 &#x2F;sbin&#x2F;init</p>
+<p>docker pull virking&#x2F;openwrt:20.04<br>ip link set eth0 promisc on<br>docker network create -d macvlan –subnet&#x3D;192.168.188.0&#x2F;24 –gateway&#x3D;192.168.188.1 -o parent&#x3D;eth0 macnet</p>
+<p>启动一个openwrt容器<br>docker run -i -t -d –name&#x3D;openwrt –restart&#x3D;always –network&#x3D;macnet –privileged&#x3D;true virking&#x2F;openwrt:20.04 &#x2F;sbin&#x2F;init<br>docker run -d –name&#x3D;”openwrt” –restart unless-stopped –network macnet –privileged dreamwsbg&#x2F;openwrt:7.0 &#x2F;sbin&#x2F;init<br>编辑网卡<br>vi &#x2F;etc&#x2F;config&#x2F;network<br>内容如下，注意修改网段</p>
+<p>config interface ‘loopback’<br>        option ifname ‘lo’<br>        option proto ‘static’<br>        option ipaddr ‘127.0.0.1’<br>        option netmask ‘255.0.0.0’</p>
+<p>config globals ‘globals’<br>        option ula_prefix ‘fdd3:60d7:a044::&#x2F;48’</p>
+<p>config interface ‘lan’<br>        option type ‘bridge’<br>        option ifname ‘eth0’<br>        option proto ‘static’<br>        option ipaddr ‘192.168.188.254’ #openwrt的IP地址，可自定义网段内任意IP，不发生冲突即可<br>        option netmask ‘255.255.255.0’<br>        option gateway ‘192.168.188.1’ #填写主路由的IP地址<br>        option dns ‘192.168.188.1’ #填写主路由的IP地址</p>
+<p>config interface ‘vpn0’<br>        option ifname ‘tun0’<br>        option proto ‘none’</p>
+<p>重启玩客云等待openwrt启动后<br>账密：root-password</p>
+<p>回到玩客云shell<br> &#x2F;etc&#x2F;network&#x2F;interfaces &#x2F;etc&#x2F;network&#x2F;interfaces.bak<br> vi &#x2F;etc&#x2F;network&#x2F;interfaces</p>
+<p>添加如下内容<br>auto macvlan<br>iface macvlan inet static<br>  address 192.168.188.8<br>  netmask 255.255.255.0<br>  gateway 192.168.188.1<br>  dns-nameservers 192.168.188.1<br>  pre-up ip link add macvlan link eth0 type macvlan mode bridge<br>  post-down ip link del macvlan link eth0 type macvlan mode bridge</p>
+<p>Bushu transmission</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker run \</span><br><span class="line">  -d \</span><br><span class="line">  --name=transmission \</span><br><span class="line">  -e USERNAME=admin \</span><br><span class="line">  -e PASSWORD=admin \</span><br><span class="line">  -e PUID=1000 \</span><br><span class="line">  -e PGID=1000 \</span><br><span class="line">  -p 9091:9091 \</span><br><span class="line">  -p 51413:51413 \</span><br><span class="line">  -p 51413:51413/udp \</span><br><span class="line">  -v /data/transmission/config:/config \</span><br><span class="line">  -v /data:/downloads \</span><br><span class="line">  -v /data/transmission/watch:/watch \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">lsioarmhf/transmission</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>给transmission安装界面<br>到docker的shell中<br>wget <a target="_blank" rel="noopener" href="https://gitee.com/culturist/transmission-web-control/raw/master/release/install-tr-control-gitee.sh">https://gitee.com/culturist/transmission-web-control/raw/master/release/install-tr-control-gitee.sh</a><br>bash install-tr-control-cn.sh</p>
+<p>网盘nextcloud</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name nextcloud \</span><br><span class="line">-p 8085:80 \</span><br><span class="line">-v /data/docker/nextcloud/html:/var/www/html \</span><br><span class="line">-e TZ=Asia/Shanghai \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">nextcloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>blog</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80:80 --name typecho -v <span class="string">&quot;/data/tyepcho&quot;</span>:/var/www/html yangxuan8282/typecho:php-arm</span><br></pre></td></tr></table></figure>
+
+<p>aria2</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --name aria2-pro \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    --log-opt max-size=1m \</span><br><span class="line">    --network host \</span><br><span class="line">    -e PUID=1000 \</span><br><span class="line">    -e PGID=1000 \</span><br><span class="line">    -e RPC_SECRET=12345 \</span><br><span class="line">    -e RPC_PORT=6800 \</span><br><span class="line">    -e LISTEN_PORT=6888 \</span><br><span class="line">    -v /data/docker/aria2/config:/config \</span><br><span class="line">    -v /data/downloads:/downloads \</span><br><span class="line">    p3terx/aria2-pro</span><br></pre></td></tr></table></figure>
+
+<p>浏览器安装插件连接 6800端口即可</p>
+<p>web ui</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+<p>同步工具</p>
+<p>verysync</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--restart=unless-stopped \</span><br><span class="line">--name verysync \</span><br><span class="line">-v /data/verysync:/data \</span><br><span class="line">-p 8886:8886 \</span><br><span class="line">unwenliu/verysync:armv7</span><br></pre></td></tr></table></figure>
+
+<p>qbittorrent</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name=qbittorrent \</span><br><span class="line">  -e PUID=1000 \</span><br><span class="line">  -e PGID=1000 \</span><br><span class="line">  -e TZ=Aisa/Shanghai \</span><br><span class="line">  -e WEBUI_PORT=8080 \</span><br><span class="line">  --network host \</span><br><span class="line">  -v /data/docker/qb/config:/config \</span><br><span class="line">  -v /data/qb_downloads:/downloads \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  ghcr.io/linuxserver/qbittorrent</span><br></pre></td></tr></table></figure>
+
+<p>有了docker，玩客云确实一个不错的nas了</p>
+<p>相比直接安装openwrt，可用性会高很多，也经得起折腾</p>
+<p>希望大家不要瞧不起玩客云，哈</p>
+<p>玩客云的终点就在这里了，已经是极限了</p>
+<p>本期视频就到这里了，我是张大七，我们下期见。</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/linux%E4%B8%8B%E7%9A%84%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="LI BAO">
+        <meta itemprop="description" content="免费博客不定时更新！！！！！">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2023/09/23/linux%E4%B8%8B%E7%9A%84%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/" itemprop="url">linux下的删除文件命令</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <p>在linux中删除文件与文件夹我们可以直接使用rm就可以删除了，彻底删除文件或文件夹我们可以使用shred命令来完成，接下来是小编为大家收集的Linux下删除文件命令，希望能帮到大家。<br>Linux下删除文件命令</p>
+<p>linux删除目录很简单，很多人还是习惯用rmdir，不过一旦目录非空，就陷入深深的苦恼之中，现在使用rm -rf命令即可。</p>
+<p>直接rm就可以了，不过要加两个参数-rf 即：rm -rf 目录名字</p>
+<p>删除目录、文件 rm(remove)</p>
+<p>功能说明：删除文件或目录。</p>
+<p>语法：rm [-dfirv][–help][–version][文件或目录…]</p>
+<p>补充说明：执行rm指令可删除文件或目录，如欲删除目录必须加上参数”-r”，否则预设仅会删除文件。</p>
+<p>参数：</p>
+<p>-d或–directory 　直接把欲删除的目录的硬连接数据删成0，删除该目录。</p>
+<p>-f或–force 　强制删除文件或目录。</p>
+<p>-i或–interactive 　删除既有文件或目录之前先询问用户。</p>
+<p>-r或-R或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。</p>
+<p>-v或–verbose 　显示指令执行过程。</p>
+<p>1 删除文件夹</p>
+<p>de&gt;rm -rf fileNamede&gt;</p>
+<p>-删除文件夹实例：</p>
+<p>rm -rf &#x2F;var&#x2F;log&#x2F;httpd&#x2F;access</p>
+<p>将会删除&#x2F;var&#x2F;log&#x2F;httpd&#x2F;access目录以及其下所有文件、文件夹</p>
+<p>需要提醒的是：使用这个rm -rf的时候一定要格外小心，linux没有回收站的</p>
+<p>2 删除文件</p>
+<p>de&gt;rm -f fileNamede&gt;</p>
+<p>使用 rm -rf 的时候一定要格外小心，linux没有回收站的</p>
+<p>删除指定文件之外的其他文件</p>
+<p>一、Linux下删除文件和文件夹常用命令如下：</p>
+<p>删除文件： rm file</p>
+<p>删除文件夹： rm -rf dir</p>
+<p>需要注意的是， rmdir 只能够删除 空文件夹。</p>
+<p>二、删除制定文件(夹)之外的所有文件呢?</p>
+<p>1、方法1，比较麻烦的做法是：</p>
+<p>复制需要保留的文件到其他文件夹，然后将该目录删除， 然后将需要保留的移动 回来。</p>
+<p>mv keep ..&#x2F; #保留文件(夹) keep</p>
+<p>rm -rf * #删除当前文件夹里的所有文件</p>
+<p>mv ..&#x2F;keep .&#x2F; #将原来的东西移动回来</p>
+<p>2、方法2，需要在当前文件夹中进行:</p>
+<p>rm -rf !(keep) #删除keep文件之外的所有文件</p>
+<p>rm -rf !(keep1 | keep2) #删除keep1和keep2文件之外的所有文件</p>
+<p>Linux中彻底删除文件</p>
+<p>shred彻底删除文件的方法:</p>
+<p>$ shred -u file</p>
+<p>shred会用一些随机内容覆盖文件所在的节点和数据块，并删除文件(-u参数)。</p>
+<p>如果想清除的更彻底一点可以加-z 参数，意思是先用随机数据填充，最后再用0填充。</p>
+<p>$ shred -u -z file</p>
+<p>另外shred还可以清除整个分区或磁盘，比如想彻底清除&#x2F;dev&#x2F;sdb1分区的内容可以这样:</p>
+<p>$ shred &#x2F;dev&#x2F;sdb1 (注意不要加-u参数)</p>
+<p>shred的详细参数：</p>
+<p>-f, –force 更改权限允许写入(如有必要)</p>
+<p>-n, –iterations&#x3D;N 重写N次，默认为3次</p>
+<p>–random-source&#x3D;FILE 从指定文件读取数据</p>
+<p>-s, –size&#x3D;N 将文件粉碎为固定大小 (可使用后缀如K、M、C等)</p>
+<p>-u, –remove 重写后截短并移除文件</p>
+<p>-v, –verbose 显示进度</p>
+<p>-z, –zero - add 用0覆盖数据</p>
+<p>–help 显示帮助</p>
+<p>–version 显示版本信息</p>
+<p>看了“Linux下删除文件命令”还想看：<br>reboot  重启<br>poweroff    关机</p>
+<p>查看当前可运行或可安装的所有ls    （LS）<br>就是ls</p>
+<p>运行脚本指令<br>bash</p>
+<p>例如运行install7.sh</p>
+<p>可以这样<br>bash install7.sh</p>
+<p>查看当前可运行或可安装的所有ls    （LS）<br>就是ls</p>
+<p>运行脚本指令<br>bash</p>
+<p>例如运行install7.sh</p>
+<p>可以这样<br>bash install7.sh</p>
+<p>在Linux系统中设置中文，一般需要进行以下步骤：</p>
+<p>安装中文字体<br>在终端中输入以下命令安装中文字体：</p>
+<p>csharp<br>Copy code<br>sudo apt-get install fonts-wqy-zenhei<br>安装中文输入法<br>在终端中输入以下命令安装中文输入法：</p>
+<p>sql<br>Copy code<br>sudo apt-get install fcitx fcitx-config-gtk fcitx-googlepinyin fcitx-table-all<br>配置系统语言环境<br>在终端中输入以下命令打开语言环境配置界面：</p>
+<p>Copy code<br>sudo dpkg-reconfigure locales<br>在弹出的窗口中，选择需要的语言环境，例如选择中文，然后按照提示完成配置即可。</p>
+<p>配置输入法<br>打开终端，输入以下命令：</p>
+<p>lua<br>Copy code<br>im-config<br>在弹出的窗口中，选择fcitx作为默认的输入法，然后保存退出即可。</p>
+<p>重启系统<br>重启系统后，打开任意文本编辑器，按下Ctrl + Space可以切换输入法，测试输入法是否正常。</p>
+<p>希望这些步骤能帮助您在您的系统中设置中文。</p>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

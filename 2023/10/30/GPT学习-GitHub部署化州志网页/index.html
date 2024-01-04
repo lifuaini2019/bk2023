@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>GPT学习-GitHub部署化州志网页 | 保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/10/30/GPT%E5%AD%A6%E4%B9%A0-GitHub%E9%83%A8%E7%BD%B2%E5%8C%96%E5%B7%9E%E5%BF%97%E7%BD%91%E9%A1%B5/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="LI BAO">
+       <meta itemprop="description" content="免费博客不定时更新！！！！！">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">GPT学习-GitHub部署化州志网页</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-10-30T15:00:00+08:00">2023年10月30日 15:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p><strong>我问:</strong></p>
+<p>我们来聊聊github的问题，我在github建了个仓库名叫-hzj，建了个文件夹tu 里面有很多图片例如001.png 002.png 003.png 004.png 等等几百张图片，你能写一个网页代码给我，可以快速浏览这些图片吗？可以上一页，或下一页，或跳到指定页，你写一个代码给我保存在index.html 可以上传到-hzj仓库中的根目录即可运行</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>你可以使用以下的HTML和JavaScript代码来创建一个简单的图片浏览器，该代码允许你在GitHub仓库中的根目录中的<code>index.html</code>文件中查看图片。确保你已经将所有图片上传到了<code>tu</code>文件夹中。</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;图片浏览器&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;image-container&quot;&gt;</span><br><span class="line">        &lt;img id=&quot;current-image&quot; src=&quot;tu/001.png&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;pagination&quot;&gt;</span><br><span class="line">        &lt;button id=&quot;prev-button&quot;&gt;上一页&lt;/button&gt;</span><br><span class="line">        &lt;button id=&quot;next-button&quot;&gt;下一页&lt;/button&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;page-number&quot; placeholder=&quot;跳至页码&quot;&gt;</span><br><span class="line">        &lt;button id=&quot;go-button&quot;&gt;跳至&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const images = [</span><br><span class="line">            &quot;001.png&quot;,</span><br><span class="line">            &quot;002.png&quot;,</span><br><span class="line">            &quot;003.png&quot;,</span><br><span class="line">            &quot;004.png&quot;,</span><br><span class="line">            // 添加其他图片的文件名</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        let currentImageIndex = 0;</span><br><span class="line">        const currentImage = document.getElementById(&quot;current-image&quot;);</span><br><span class="line">        const prevButton = document.getElementById(&quot;prev-button&quot;);</span><br><span class="line">        const nextButton = document.getElementById(&quot;next-button&quot;);</span><br><span class="line">        const pageNumberInput = document.getElementById(&quot;page-number&quot;);</span><br><span class="line">        const goButton = document.getElementById(&quot;go-button&quot;);</span><br><span class="line"></span><br><span class="line">        function updateImage() &#123;</span><br><span class="line">            currentImage.src = &quot;tu/&quot; + images[currentImageIndex];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        prevButton.addEventListener(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">            if (currentImageIndex &gt; 0) &#123;</span><br><span class="line">                currentImageIndex--;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        nextButton.addEventListener(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">            if (currentImageIndex &lt; images.length - 1) &#123;</span><br><span class="line">                currentImageIndex++;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        goButton.addEventListener(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">            const pageNumber = parseInt(pageNumberInput.value, 10);</span><br><span class="line">            if (!isNaN(pageNumber) &amp;amp;&amp;amp; pageNumber &gt;= 1 &amp;amp;&amp;amp; pageNumber &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = pageNumber - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        updateImage();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这段代码创建了一个简单的图片浏览器，允许你浏览<code>tu</code>文件夹中的图片。你可以将这段代码保存为<code>index.html</code>文件，然后将其上传到你的GitHub仓库的根目录。然后，你可以通过访问GitHub仓库的页面来查看图片。你可以使用“上一页”和“下一页”按钮浏览图片，还可以通过输入页码并点击“跳至”按钮来跳到指定页。记得将<code>images</code>数组中的图片文件名添加或修改为你的实际图片文件名。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>这个页面排版不好，本网页应该在上方加入一些说明文本：本名：化州志 1900年编。<br>上一页和下一页按钮要加大点，放在页页图片的上方，<br>应该要放在页希望在左边加入一排目录列表：这排目录列表我可以输入，例目前言001.png 第一课008.png  第二课  015.png    左侧要加入15个目录</p>
+<p>有时候图片比较大，有时候打开很慢，希望打开速度要快</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>根据你的要求，以下是一个改进的版本，包括说明文本、上一页&#x2F;下一页按钮的位置、目录列表以及图片预加载，以提高加载速度：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;图片浏览器 - 化州志 1900年编&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #image-container &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container img &#123;</span><br><span class="line">            max-width: 100%;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #pagination &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            margin-top: 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #prev-button, #next-button &#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            padding: 10px 20px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list &#123;</span><br><span class="line">            float: left;</span><br><span class="line">            width: 200px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul &#123;</span><br><span class="line">            list-style-type: none;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul li &#123;</span><br><span class="line">            margin: 5px 0;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;本名：化州志 1900年编&lt;/h2&gt;</span><br><span class="line">    &lt;div id=&quot;directory-list&quot;&gt;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">- 第一课 (001.png)</span><br><span class="line"></span><br><span class="line">- 第二课 (008.png)</span><br><span class="line"></span><br><span class="line">- 第三课 (015.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;image-container&quot;&gt;</span><br><span class="line">        &lt;p id=&quot;image-title&quot;&gt;&lt;/p&gt;</span><br><span class="line">        &lt;img id=&quot;current-image&quot; src=&quot;tu/001.png&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;pagination&quot;&gt;</span><br><span class="line">        &lt;button id=&quot;prev-button&quot; onclick=&quot;goToPrevPage()&quot;&gt;上一页&lt;/button&gt;</span><br><span class="line">        &lt;button id=&quot;next-button&quot; onclick=&quot;goToNextPage()&quot;&gt;下一页&lt;/button&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;page-number&quot; placeholder=&quot;跳至页码&quot;&gt;</span><br><span class="line">        &lt;button id=&quot;go-button&quot; onclick=&quot;goToPageInput()&quot;&gt;跳至&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const images = [</span><br><span class="line">            &quot;001.png&quot;,</span><br><span class="line">            &quot;002.png&quot;,</span><br><span class="line">            &quot;003.png&quot;,</span><br><span class="line">            &quot;004.png&quot;,</span><br><span class="line">            // 添加其他图片的文件名</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        let currentImageIndex = 0;</span><br><span class="line">        const currentImage = document.getElementById(&quot;current-image&quot;);</span><br><span class="line">        const imageTitle = document.getElementById(&quot;image-title&quot;);</span><br><span class="line">        const prevButton = document.getElementById(&quot;prev-button&quot;);</span><br><span class="line">        const nextButton = document.getElementById(&quot;next-button&quot;);</span><br><span class="line">        const pageNumberInput = document.getElementById(&quot;page-number&quot;);</span><br><span class="line"></span><br><span class="line">        function updateImage() &#123;</span><br><span class="line">            currentImage.src = &quot;tu/&quot; + images[currentImageIndex];</span><br><span class="line">            imageTitle.textContent = `第$&#123;currentImageIndex + 1&#125;课 ($&#123;images[currentImageIndex]&#125;)`;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPrevPage() &#123;</span><br><span class="line">            if (currentImageIndex &gt; 0) &#123;</span><br><span class="line">                currentImageIndex--;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToNextPage() &#123;</span><br><span class="line">            if (currentImageIndex &lt; images.length - 1) &#123;</span><br><span class="line">                currentImageIndex++;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPage(page) &#123;</span><br><span class="line">            if (page &gt;= 1 &amp;amp;&amp;amp; page &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = page - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPageInput() &#123;</span><br><span class="line">            const pageNumber = parseInt(pageNumberInput.value, 10);</span><br><span class="line">            if (!isNaN(pageNumber) &amp;amp;&amp;amp; pageNumber &gt;= 1 &amp;amp;&amp;amp; pageNumber &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = pageNumber - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 预加载所有图片</span><br><span class="line">        images.forEach((image, index) =&gt; &#123;</span><br><span class="line">            const img = new Image();</span><br><span class="line">            img.src = &quot;tu/&quot; + image;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        updateImage();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这个版本增加了目录列表，将上一页&#x2F;下一页按钮移到了图片上方，并添加了图片预加载，以提高加载速度。你可以自定义目录列表，包括目录名称和对应的页码。确保将这个代码保存为<code>index.html</code>文件，然后上传到你的GitHub仓库的根目录。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>上一页和下一页应该放在左上侧，也就是目录上方，打开速度过慢，首次打开，先以缩略图打开，让打开速度快</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>如果你想将上一页和下一页按钮放在左上侧，同时在首次打开时以缩略图方式打开以提高速度，可以使用以下代码作为参考。这段代码使用缩略图链接，将上一页和下一页按钮移动到左上侧：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;图片浏览器 - 化州志 1900年编&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container img &#123;</span><br><span class="line">            max-width: 100%;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #pagination &#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: 10px;</span><br><span class="line">            left: 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #prev-button, #next-button &#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            padding: 10px 20px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list &#123;</span><br><span class="line">            float: left;</span><br><span class="line">            width: 200px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul &#123;</span><br><span class="line">            list-style-type: none;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul li &#123;</span><br><span class="line">            margin: 5px 0;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;本名：化州志 1900年编&lt;/h2&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;directory-list&quot;&gt;</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">- 第一课 (001.png)</span><br><span class="line"></span><br><span class="line">- 第二课 (008.png)</span><br><span class="line"></span><br><span class="line">- 第三课 (015.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;image-container&quot;&gt;</span><br><span class="line">            &lt;p id=&quot;image-title&quot;&gt;&lt;/p&gt;</span><br><span class="line">            &lt;img id=&quot;current-image&quot; src=&quot;tu/thumbnails/001.png&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;pagination&quot;&gt;</span><br><span class="line">        &lt;button id=&quot;prev-button&quot; onclick=&quot;goToPrevPage()&quot;&gt;上一页&lt;/button&gt;</span><br><span class="line">        &lt;button id=&quot;next-button&quot; onclick=&quot;goToNextPage()&quot;&gt;下一页&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const images = [</span><br><span class="line">            &quot;001.png&quot;,</span><br><span class="line">            &quot;002.png&quot;,</span><br><span class="line">            &quot;003.png&quot;,</span><br><span class="line">            &quot;004.png&quot;,</span><br><span class="line">            // 添加其他图片的文件名</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        let currentImageIndex = 0;</span><br><span class="line">        const currentImage = document.getElementById(&quot;current-image&quot;);</span><br><span class="line">        const imageTitle = document.getElementById(&quot;image-title&quot;);</span><br><span class="line"></span><br><span class="line">        function updateImage() &#123;</span><br><span class="line">            currentImage.src = &quot;tu/&quot; + images[currentImageIndex];</span><br><span class="line">            imageTitle.textContent = `第$&#123;currentImageIndex + 1&#125;课 ($&#123;images[currentImageIndex]&#125;)`;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPrevPage() &#123;</span><br><span class="line">            if (currentImageIndex &gt; 0) &#123;</span><br><span class="line">                currentImageIndex--;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToNextPage() &#123;</span><br><span class="line">            if (currentImageIndex &lt; images.length - 1) &#123;</span><br><span class="line">                currentImageIndex++;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPage(page) &#123;</span><br><span class="line">            if (page &gt;= 1 &amp;amp;&amp;amp; page &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = page - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        updateImage();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在此版本中，我假设你有缩略图的链接，将它们放在了<code>tu/thumbnails/</code>文件夹中，并在首次打开时加载缩略图，以提高加载速度。你可以根据需要自定义目录列表和文件链接。请确保将缩略图文件名与实际图片文件名对应。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>你这个不行，一，没有跳到指定页，二，下一页 上一页与这内容重叠：本名：化州志 1900年编</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>抱歉，之前的代码有一些问题。以下是一个修复的版本，它包括跳转到指定页的功能，并确保上一页和下一页按钮不会与其他内容重叠：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;图片浏览器 - 化州志 1900年编&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container img &#123;</span><br><span class="line">            max-width: 100%;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #pagination &#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: 10px;</span><br><span class="line">            left: 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #prev-button, #next-button &#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            padding: 10px 20px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list &#123;</span><br><span class="line">            float: left;</span><br><span class="line">            width: 200px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul &#123;</span><br><span class="line">            list-style-type: none;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul li &#123;</span><br><span class="line">            margin: 5px 0;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;本名：化州志 1900年编&lt;/h2&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;directory-list&quot;&gt;</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">- 第一课 (001.png)</span><br><span class="line"></span><br><span class="line">- 第二课 (008.png)</span><br><span class="line"></span><br><span class="line">- 第三课 (015.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;image-container&quot;&gt;</span><br><span class="line">            &lt;p id=&quot;image-title&quot;&gt;&lt;/p&gt;</span><br><span class="line">            &lt;img id=&quot;current-image&quot; src=&quot;tu/thumbnails/001.png&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;pagination&quot;&gt;</span><br><span class="line">        &lt;button id=&quot;prev-button&quot; onclick=&quot;goToPrevPage()&quot;&gt;上一页&lt;/button&gt;</span><br><span class="line">        &lt;button id=&quot;next-button&quot; onclick=&quot;goToNextPage()&quot;&gt;下一页&lt;/button&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; id=&quot;page-number&quot; placeholder=&quot;跳至页码&quot;&gt;</span><br><span class="line">        &lt;button id=&quot;go-button&quot; onclick=&quot;goToPageInput()&quot;&gt;跳至&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const images = [</span><br><span class="line">            &quot;001.png&quot;,</span><br><span class="line">            &quot;002.png&quot;,</span><br><span class="line">            &quot;003.png&quot;,</span><br><span class="line">            &quot;004.png&quot;,</span><br><span class="line">            // 添加其他图片的文件名</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        let currentImageIndex = 0;</span><br><span class="line">        const currentImage = document.getElementById(&quot;current-image&quot;);</span><br><span class="line">        const imageTitle = document.getElementById(&quot;image-title&quot;);</span><br><span class="line"></span><br><span class="line">        function updateImage() &#123;</span><br><span class="line">            currentImage.src = &quot;tu/&quot; + images[currentImageIndex];</span><br><span class="line">            imageTitle.textContent = `第$&#123;currentImageIndex + 1&#125;课 ($&#123;images[currentImageIndex]&#125;)`;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPrevPage() &#123;</span><br><span class="line">            if (currentImageIndex &gt; 0) &#123;</span><br><span class="line">                currentImageIndex--;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToNextPage() &#123;</span><br><span class="line">            if (currentImageIndex &lt; images.length - 1) &#123;</span><br><span class="line">                currentImageIndex++;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPage(page) &#123;</span><br><span class="line">            if (page &gt;= 1 &amp;amp;&amp;amp; page &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = page - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPageInput() &#123;</span><br><span class="line">            const pageNumber = parseInt(pageNumberInput.value, 10);</span><br><span class="line">            if (!isNaN(pageNumber) &amp;amp;&amp;amp; pageNumber &gt;= 1 &amp;amp;&amp;amp; pageNumber &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = pageNumber - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        updateImage();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这个版本修复了上一页和下一页按钮与其他内容重叠的问题，并包括了跳转到指定页的功能。确保你已经准备好了缩略图，并将它们放在正确的路径下。你可以根据需要自定义目录列表和文件链接。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>输入指定页数字，不能跳转，本名：化州志 1900年编 这个和上一页的按钮还是重叠一起，看不清</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>感谢你的反馈。我明白你的要求，我将提供一个修复的版本，其中包括跳转到指定页的功能，并解决了按钮与文本重叠的问题。请尝试以下代码：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;图片浏览器 - 化州志 1900年编&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #container &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            align-items: flex-start;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container img &#123;</span><br><span class="line">            max-width: 100%;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list &#123;</span><br><span class="line">            float: left;</span><br><span class="line">            width: 200px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul &#123;</span><br><span class="line">            list-style-type: none;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list ul li &#123;</span><br><span class="line">            margin: 5px 0;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #pagination &#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: 10px;</span><br><span class="line">            left: 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #prev-button, #next-button &#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            padding: 10px 20px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #page-number &#123;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">            padding: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;本名：化州志 1900年编&lt;/h2&gt;</span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;directory-list&quot;&gt;</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">- 第一课 (001.png)</span><br><span class="line"></span><br><span class="line">- 第二课 (008.png)</span><br><span class="line"></span><br><span class="line">- 第三课 (015.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;image-container&quot;&gt;</span><br><span class="line">            &lt;p id=&quot;image-title&quot;&gt;&lt;/p&gt;</span><br><span class="line">            &lt;img id=&quot;current-image&quot; src=&quot;tu/thumbnails/001.png&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;pagination&quot;&gt;</span><br><span class="line">            &lt;button id=&quot;prev-button&quot; onclick=&quot;goToPrevPage()&quot;&gt;上一页&lt;/button&gt;</span><br><span class="line">            &lt;button id=&quot;next-button&quot; onclick=&quot;goToNextPage()&quot;&gt;下一页&lt;/button&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; id=&quot;page-number&quot; placeholder=&quot;跳至页码&quot;&gt;</span><br><span class="line">            &lt;button id=&quot;go-button&quot; onclick=&quot;goToPageInput()&quot;&gt;跳至&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const images = [</span><br><span class="line">            &quot;001.png&quot;,</span><br><span class="line">            &quot;002.png&quot;,</span><br><span class="line">            &quot;003.png&quot;,</span><br><span class="line">            &quot;004.png&quot;,</span><br><span class="line">            // 添加其他图片的文件名</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        let currentImageIndex = 0;</span><br><span class="line">        const currentImage = document.getElementById(&quot;current-image&quot;);</span><br><span class="line">        const imageTitle = document.getElementById(&quot;image-title&quot;);</span><br><span class="line">        const pageNumberInput = document.getElementById(&quot;page-number&quot;);</span><br><span class="line"></span><br><span class="line">        function updateImage() &#123;</span><br><span class="line">            currentImage.src = &quot;tu/&quot; + images[currentImageIndex];</span><br><span class="line">            imageTitle.textContent = `第$&#123;currentImageIndex + 1&#125;课 ($&#123;images[currentImageIndex]&#125;)`;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPrevPage() &#123;</span><br><span class="line">            if (currentImageIndex &gt; 0) &#123;</span><br><span class="line">                currentImageIndex--;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToNextPage() &#123;</span><br><span class="line">            if (currentImageIndex &lt; images.length - 1) &#123;</span><br><span class="line">                currentImageIndex++;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPage(page) &#123;</span><br><span class="line">            if (page &gt;= 1 &amp;amp;&amp;amp; page &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = page - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPageInput() &#123;</span><br><span class="line">            const pageNumber = parseInt(pageNumberInput.value, 10);</span><br><span class="line">            if (!isNaN(pageNumber) &amp;amp;&amp;amp; pageNumber &gt;= 1 &amp;amp;&amp;amp; pageNumber &lt;= images.length) &#123;</span><br><span class="line">                currentImageIndex = pageNumber - 1;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        updateImage();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这个版本修复了按钮与文本重叠的问题，并包括了跳转到指定页的功能。确保你已经准备好了缩略图，并将它们放在正确的路径下。你可以根据需要自定义目录列表和文件链接。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>跳到指定页可以了，但 本名：化州志 1900年编 这个和下一页 上一页的按钮还是重叠一起</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>非常抱歉，之前的代码还存在一些问题。我已经更新了代码，以确保按钮与文本不会重叠。请尝试以下修复版本：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;化州志-在线浏览&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body &#123;</span><br><span class="line">            font-family: Arial, sans-serif;</span><br><span class="line">            text-align: center;</span><br><span class="line">            background-color: #f0f0f0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #announcement &#123;</span><br><span class="line">            background-color: #333;</span><br><span class="line">            color: #fff;</span><br><span class="line">            padding: 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #container &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #directory-list &#123;</span><br><span class="line">            flex: 1;</span><br><span class="line">            max-width: 200px;</span><br><span class="line">            background-color: #eee;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container &#123;</span><br><span class="line">            flex: 2;</span><br><span class="line">            background-color: #fff;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #image-container img &#123;</span><br><span class="line">            max-width: 100%;</span><br><span class="line">            height: auto;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #controls &#123;</span><br><span class="line">            clear: both;</span><br><span class="line">            padding: 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #pageControls &#123;</span><br><span class="line">            float: left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #zoomControls &#123;</span><br><span class="line">            float: right;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        button &#123;</span><br><span class="line">            background-color: #007acc;</span><br><span class="line">            color: #fff;</span><br><span class="line">            border: none;</span><br><span class="line">            padding: 10px 20px;</span><br><span class="line">            margin: 5px;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;announcement&quot;&gt;</span><br><span class="line">        &lt;h1&gt;网站公告内容！！！&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;directory-list&quot;&gt;</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">- 前言</span><br><span class="line"></span><br><span class="line">- 第一章</span><br><span class="line"></span><br><span class="line">- 第二章</span><br><span class="line"></span><br><span class="line">- 百度首页</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div id=&quot;image-container&quot;&gt;</span><br><span class="line">            &lt;p id=&quot;page-number&quot;&gt;(第？页)&lt;/p&gt;</span><br><span class="line">            &lt;img id=&quot;current-image&quot; src=&quot;tu/thumbnails/001.png&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=&quot;controls&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;pageControls&quot; class=&quot;control-group&quot;&gt;</span><br><span class="line">            &lt;button id=&quot;prev-button&quot; onclick=&quot;goToPrevPage()&quot;&gt;上一页&lt;/button&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; id=&quot;page-number-input&quot; placeholder=&quot;跳至页码&quot; onkeypress=&quot;jumpToPage(event)&quot;&gt;</span><br><span class="line">            &lt;button id=&quot;next-button&quot; onclick=&quot;goToNextPage()&quot;&gt;下一页&lt;/button&gt;</span><br><span class="line">            &lt;button id=&quot;go-button&quot; onclick=&quot;jumpToPageButton()&quot;&gt;跳至&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;zoomControls&quot; class=&quot;control-group&quot;&gt;</span><br><span class="line">            &lt;button id=&quot;zoom-in&quot; onclick=&quot;zoomInImage()&quot;&gt;放大&lt;/button&gt;</span><br><span class="line">            &lt;button id=&quot;zoom-out&quot; onclick=&quot;zoomOutImage()&quot;&gt;缩小&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const chapters = [</span><br><span class="line">            &#123; startPage: 1, endPage: 7 &#125;, // 前言</span><br><span class="line">            &#123; startPage: 8, endPage: 14 &#125;, // 第一章</span><br><span class="line">            &#123; startPage: 15, endPage: 20 &#125;, // 第二章</span><br><span class="line">            // 添加其他章节的页数范围</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        let currentChapter = 1;</span><br><span class="line">        let currentPage = chapters[currentChapter - 1].startPage;</span><br><span class="line">        const currentImage = document.getElementById(&quot;current-image&quot;);</span><br><span class="line">        const pageText = document.getElementById(&quot;page-number&quot;);</span><br><span class="line"></span><br><span class="line">        function updateImage() &#123;</span><br><span class="line">            const chapter = chapters[currentChapter - 1];</span><br><span class="line">            const imageName = (&#x27;00&#x27; + currentPage).slice(-3) + &#x27;.png&#x27;;</span><br><span class="line">            currentImage.src = &#x27;tu/&#x27; + imageName;</span><br><span class="line">            pageText.textContent = `(第$&#123;currentPage&#125;页)`;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPrevPage() &#123;</span><br><span class="line">            if (currentPage &gt; chapters[currentChapter - 1].startPage) &#123;</span><br><span class="line">                currentPage--;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125; else if (currentChapter &gt; 1) &#123;</span><br><span class="line">                goToChapter(currentChapter - 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToNextPage() &#123;</span><br><span class="line">            if (currentPage &lt; chapters[currentChapter - 1].endPage) &#123;</span><br><span class="line">                currentPage++;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125; else if (currentChapter &lt; chapters.length) &#123;</span><br><span class="line">                goToChapter(currentChapter + 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToPage(page) &#123;</span><br><span class="line">            if (page &gt;= 1 &amp;amp;&amp;amp; page &lt;= chapters[chapters.length - 1].endPage) &#123;</span><br><span class="line">                currentPage = page;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function jumpToPageButton() &#123;</span><br><span class="line">            const pageNumber = parseInt(document.getElementById(&quot;page-number-input&quot;).value);</span><br><span class="line">            if (!isNaN(pageNumber) &amp;amp;&amp;amp; pageNumber &gt;= 1 &amp;amp;&amp;amp; pageNumber &lt;= chapters[chapters.length - 1].endPage) &#123;</span><br><span class="line">                currentPage = pageNumber;</span><br><span class="line">                updateImage();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function jumpToPage(event) &#123;</span><br><span class="line">            if (event.key === &quot;Enter&quot;) &#123;</span><br><span class="line">                jumpToPageButton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function zoomInImage() &#123;</span><br><span class="line">            const currentWidth = currentImage.clientWidth;</span><br><span class="line">            currentImage.style.width = (currentWidth * 1.2) + &quot;px&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function zoomOutImage() &#123;</span><br><span class="line">            const currentWidth = currentImage.clientWidth;</span><br><span class="line">            currentImage.style.width = (currentWidth / 1.2) + &quot;px&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function goToChapter(chapter) &#123;</span><br><span class="line">            currentChapter = chapter;</span><br><span class="line">            currentPage = chapters[chapter - 1].startPage;</span><br><span class="line">            updateImage();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        updateImage();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>我问:</strong></p>
+<p>很好，这是我想要的<br>谢谢你</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>你好，很高兴你满意了！如果你有任何其他问题或需要进一步的帮助，请随时告诉我。祝你使用这个网页愉快！</p>
+<p><strong>我问:</strong></p>
+<p>我想在    <div id="container"><br>        <div id="directory-list"><br>            <ul><br>                <li onclick="goToPage(1)">前言<br>                <li onclick="goToPage(8)">第一章<br>                <li onclick="goToPage(15)">第二章<br>                <li onclick="goToPage(21)">第三章<br>                <li onclick="window.location.href='https://www.baidu.com'">百度首页<br>                <!-- 添加其他目录项 --></p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>如果你希望在你的 Cloudflare Worker 中的目录列表中添加一个指向百度首页的</p>
+<hr>
+<p><strong>我问:</strong></p>
+<div id="container">
+        <div id="directory-list">
+            <ul>
+                <li onclick="goToPage(1)">前言
+                <li onclick="goToPage(8)">第一章
+                <li onclick="goToPage(15)">第二章
+                <li onclick="goToPage(21)">第三章
+                <li onclick="window.location.href='https://www.baidu.com'">百度首页
+                我想在这里写入一些简介，应该怎样写
+                <!-- 添加其他目录项 -->
+
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>如果你想在目录列表中添加一些简介，你可以在<code> </code>元素内的每个&#96;</p>
+<ul>
+<li><code>元素下方添加一个</code><br>&#96;标签，其中包含你想要显示的简介文本。例如：</li>
+</ul>
+<figure class="hljs highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   - 前言</span><br><span class="line">   这是前言的简介。</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   - 第一章</span><br><span class="line">   第一章的简介。</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   - 第二章</span><br><span class="line">   第二章的简介。</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   - 第三章</span><br><span class="line">   第三章的简介。</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   - 百度首页</span><br><span class="line">   这是百度首页的简介。</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 其他内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这将在每个目录项下方显示简介文本。你可以根据需要修改每个章节的简介内容。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>我想在    <div id="container"><br>        <div id="directory-list"><br>            <ul><br>                <li onclick="goToPage(1)">前言<br>                <li onclick="goToPage(8)">第一章<br>                <li onclick="goToPage(15)">第二章<br>                <li onclick="goToPage(21)">第三章<br>                <li onclick="window.location.href='https://www.baidu.com'">百度首页<br>                <p>这里写入本网站介绍内容可以吗？这样？</p><br>                <!-- 添加其他目录项 --></p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>是的，你可以在<code> </code>元素的下方添加一个<code> </code>标签来放置本网站的介绍内容，就像你所示例的一样。这样的修改允许你在网站目录下方提供网站的简介或说明。在示例中，你添加的文本会显示在“百度首页”目录项下方。</p>
+<p>以下是你的代码示例：</p>
+<figure class="hljs highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   - 前言</span><br><span class="line">   </span><br><span class="line">   - 第一章</span><br><span class="line">   </span><br><span class="line">   - 第二章</span><br><span class="line">   </span><br><span class="line">   - 第三章</span><br><span class="line">   </span><br><span class="line">   - 百度首页</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>这里写入本网站介绍内容可以吗？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 添加其他内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>你可以根据需要修改和扩展介绍内容。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>p&gt;有时间或有意向修改完善本章节的，给我发邮件：<a href="mailto:&#x31;&#x31;&#55;&#55;&#x36;&#52;&#51;&#x35;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#109;">&#x31;&#x31;&#55;&#55;&#x36;&#52;&#51;&#x35;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#109;</a> </p></p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>当用户有意向或时间来修改和完善特定章节时，你可以在网站上提供一个联系方式，如你所示的电子邮件地址。用户可以使用该电子邮件地址来与你联系以表达他们的意向。以下是你的代码示例，包括电子邮件联系方式：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;container&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;directory-list&quot;&gt;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">- 前言</span><br><span class="line"></span><br><span class="line">- 第一章</span><br><span class="line"></span><br><span class="line">- 第二章</span><br><span class="line"></span><br><span class="line">- 第三章</span><br><span class="line"></span><br><span class="line">- 百度首页</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;p&gt;如果有时间或有意向修改完善本章节的，给我发邮件：&lt;a href=&quot;mailto:11776435@qq.com&quot;&gt;11776435@qq.com&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;!-- 添加其他内容 --&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在上述代码中，用户可以点击电子邮件地址链接以使用他们默认的邮件客户端发送邮件给你。如果你希望提供其他联系方式或者更详细的信息，也可以进一步扩展这个内容。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<div id="container">
+    <div id="directory-list">
+        
+
+<ul>
+<li><p>前言</p>
+</li>
+<li><p>第一章</p>
+</li>
+<li><p>第二章</p>
+</li>
+<li><p>第三章</p>
+</li>
+<li><p>百度首页</p>
+<pre><code>  &lt;p&gt;如果有时间或有意向修改完善本章节的，给我发邮件：&lt;a href=&quot;mailto:11776435@qq.com&quot;&gt;11776435@qq.com&lt;/a&gt;&lt;/p&gt;
+  这里插入一张二维码图片tu/rwm/123.png
+  或者扫一扫微信二维码添加我，我也可以给你发网页代码你修改
+</code></pre>
+  </div>
+  <!-- 添加其他内容 --></li>
+</ul>
+</div>
+
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>你可以在网页中插入二维码图片以供用户扫描，以便他们能够添加你或获取更多信息。在你的代码中，你可以像这样插入二维码图片：</p>
+<figure class="hljs highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;container&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;directory-list&quot;&gt;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">- 前言</span><br><span class="line"></span><br><span class="line">- 第一章</span><br><span class="line"></span><br><span class="line">- 第二章</span><br><span class="line"></span><br><span class="line">- 第三章</span><br><span class="line"></span><br><span class="line">- 百度首页</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;p&gt;如果有时间或有意向修改完善本章节的，给我发邮件：&lt;a href=&quot;mailto:11776435@qq.com&quot;&gt;11776435@qq.com&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;扫描下面的二维码，或者添加我微信：&lt;/p&gt;</span><br><span class="line">        &lt;img src=&quot;tu/rwm/123.png&quot; alt=&quot;微信二维码&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;!-- 添加其他内容 --&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在上述代码中，<code>&lt;img&gt;</code> 元素的 <code>src</code> 属性设置为你的二维码图片的路径。这将在网页上显示一个带有你的微信二维码的图像，以供用户扫描。用户可以使用手机或平板电脑上的二维码扫描应用程序扫描该二维码，以添加你的微信或获取更多信息。</p>
+<hr>
+<p><strong>我问:</strong></p>
+<p>为什么这张图二维码显示不出来 ？</p>
+<hr>
+<p><strong>ChatGPT回答:</strong></p>
+<p>二维码未显示出来可能有几个原因：</p>
+<ul>
+<li><strong>文件路径错误：</strong> 确保图像的文件路径是正确的。在你的HTML文件中，<code> </code> 标签的 <code>src</code> 属性应该指向正确的图像文件。确保路径的大小写和文件扩展名正确。</li>
+<li><strong>文件不存在：</strong> 检查指定路径的图像文件是否存在于该位置。你可以手动检查文件系统以确保文件存在。</li>
+<li><strong>图像格式问题：</strong> 确保图像文件是支持的格式，如JPEG、PNG 或 GIF。不支持的格式可能无法正常显示。</li>
+<li><strong>路径问题：</strong> 如果你的图像文件位于与HTML文件不同的文件夹中，确保在 <code>src</code> 属性中使用相对路径，或者你可以使用绝对路径。</li>
+<li><strong>网络问题：</strong> 如果你的网站在互联网上托管，确保你的服务器没有阻止加载图像文件的安全设置。你可以检查浏览器的开发者工具来查看是否有错误信息。</li>
+</ul>
+<p>如果上述检查都没有解决问题，你可能需要提供更多关于文件路径、文件结构和问题上下文的信息，以便我可以提供更具体的帮助。</p>
+<hr>
+<p>最后面，给大家送上化州志PDF原文件下载，免费的<br>微信扫下面二维码，进入公众号回复：化州志 三个字即可得到下载链接，关键是免费下载<br><img src="https://github.com/lifuaini2019/-hzj/raw/main/tu/rwm/456.png" alt="公众号二维码"></p>
+<p>如果对你有用的记得留言给我！谢谢</p>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2023/10/29/GPT%E8%81%8A%E5%A4%A9%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B-%E5%86%99%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B/" rel="next" title="GPT聊天学习过程-写一个软件过程"><i class="fas fa-angle-left"></i><span class="nav-title">GPT聊天学习过程-写一个软件过程</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2023/10/30/%E6%B5%8B%E8%AF%95%E9%A1%B5/" rel="prev" title="测试页KO"><span class="nav-title">测试页KO</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

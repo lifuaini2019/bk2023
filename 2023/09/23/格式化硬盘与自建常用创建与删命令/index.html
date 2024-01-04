@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "一键复制命令",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>格式化硬盘与自建常用创建与删命令 | 保持微笑 - 分享个人生活，日常所玩所见所闻与各种零散命令分享</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">保持微笑</a></h1>
+        <h2 class="subtitle">分享个人生活，日常所玩所见所闻与各种零散命令分享</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://bk.lifu.eu.org/2023/09/23/%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%A1%AC%E7%9B%98%E4%B8%8E%E8%87%AA%E5%BB%BA%E5%B8%B8%E7%94%A8%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%88%A0%E5%91%BD%E4%BB%A4/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="LI BAO">
+       <meta itemprop="description" content="免费博客不定时更新！！！！！">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="保持微笑">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">格式化硬盘与自建常用创建与删命令</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2023-09-23T10:00:00+08:00">2023年09月23日 10:00:00</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BB%A3%E7%A0%81%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">代码命令</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>fdisk -l 命令查看刚刚接入USB的U盘&#x2F;硬盘并记下其设备名称<br>查看挂载用这个下面<br>df -h</p>
+<ol start="2">
+<li>mkfs.ext4 —— 创建ext4文件系统硬盘格式化。</li>
+</ol>
+<p>mkfs.FAT32 &#x2F;dev&#x2F;sda1  （这是我的分区U盘名&#x2F;dev&#x2F;mmcblk1p1）<br>mkfs.ext4 &#x2F;dev&#x2F;mmcblk0p1<br>按Y同意<br>出现这句完成</p>
+<p>Writing superblocks and filesystem accounting information:<br>done<br>要等几分钟</p>
+<p>四、用blkid 命令查看所需要挂载硬盘的UUID，并复制保存UUID。例如下图：<br>blkid &#x2F;dev&#x2F;sda1<br>这是我的<br>UUID&#x3D;”7721c00b-5273-4d10-9763-b5de02537659” TYPE&#x3D;”ext4”<br>      F230-4E90” BLOCK_SIZE&#x3D;”512” TYPE&#x3D;”vfat” PARTUUID&#x3D;<br>利用cd命令切换到要挂载的目标目录，然后利用mkdir命令创建挂载目录 ，也可以使用WinSCP软件直接目标目录下创建挂载目录。例如下图：<br>进入mnt目录下创建一个文件夹，权根0755</p>
+<p>六、打开&#x2F;etc&#x2F;fstab文件，在最后行追加（记住是追加，原有的内容不要动）下面内容：<br>mnt下面建一个libaob2 新建的目录<br>UUID&#x3D;0f54da88-7f6d-4f41-9069-8b9ce53c045f   &#x2F;mnt&#x2F;libao2&#x2F;   ext4    defaults    0 0</p>
+<p>reboot重启后会看到mnt下面建一个了一个libaob2 新建的目录了</p>
+<p>创建文件夹命令<br>mkdir</p>
+<h2 id="例-：在桌-下-创建以“demo”命名的-件夹，并且给-件夹赋权限，权限为123。mkdir-123-桌面-demo"><a href="#例-：在桌-下-创建以“demo”命名的-件夹，并且给-件夹赋权限，权限为123。mkdir-123-桌面-demo" class="headerlink" title="例?：在桌?下?创建以“demo”命名的?件夹，并且给?件夹赋权限，权限为123。mkdir  123  桌面&#x2F;demo"></a>例?：在桌?下?创建以“demo”命名的?件夹，并且给?件夹赋权限，权限为123。<br>mkdir  123  桌面&#x2F;demo</h2><p>在当前目录创建libao3文件夹<br>mkdir  libao3<br>CD到指定目录</p>
+<p>cd 命令切换目录只需在命令后加目录名称便可。例如：测试</p>
+<h2 id="ln-s-mnt-libao2-www-www-软连我的应该是cd-mnt-libao2-上面去libao2文件夹下面去libao3文件夹cd-mnt-libao2-libao3-创建和删软链-ln-–s-mnt-libao2-www-wwww-说明：即在-mnt-libao2-www-在根录下建一个www的快捷-式-rm-–rf-www说明：删除软连接-rm-–rf-www-说明：删除www录下的-件"><a href="#ln-s-mnt-libao2-www-www-软连我的应该是cd-mnt-libao2-上面去libao2文件夹下面去libao3文件夹cd-mnt-libao2-libao3-创建和删软链-ln-–s-mnt-libao2-www-wwww-说明：即在-mnt-libao2-www-在根录下建一个www的快捷-式-rm-–rf-www说明：删除软连接-rm-–rf-www-说明：删除www录下的-件" class="headerlink" title="ln-s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;www 软连我的应该是cd &#x2F;mnt&#x2F;libao2&#x2F;上面去libao2文件夹下面去libao3文件夹cd &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;创建和删软链#ln –s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;wwww&#x2F;&#x2F;说明：即在&#x2F;mnt&#x2F;libao2&#x2F;www&#x2F;在根录下建一个www的快捷?式#rm –rf www说明：删除软连接++++++++++++++++++++++++++++++++#rm –rf www&#x2F;说明：删除www录下的?件"></a>ln-s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;www 软连<br>我的应该是<br>cd &#x2F;mnt&#x2F;libao2&#x2F;<br>上面去libao2文件夹<br>下面去libao3文件夹<br>cd &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;<br>创建和删软链<br>#ln –s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;wwww&#x2F;&#x2F;<br>说明：即在&#x2F;mnt&#x2F;libao2&#x2F;www&#x2F;在根录下建一个www的快捷?式<br>#rm –rf www<br>说明：删除软连接<br>++++++++++++++++++++++++++++++++<br>#rm –rf www&#x2F;<br>说明：删除www录下的?件</h2><p>开启权限命令<br>例如我要开启libao2目录的权限为0777的就下面操作</p>
+<p>chmod -R 777 &#x2F;mnt&#x2F;libao2&#x2F;</p>
+<h2 id="删除件夹【rm】"><a href="#删除件夹【rm】" class="headerlink" title="删除件夹【rm】"></a>删除件夹【rm】</h2><p>rm -rf &#x2F;mnt&#x2F;libao2&#x2F;libao3</p>
+<p>将会删除&#x2F;mnt&#x2F;libao2&#x2F;libao3目录以及其下所有文件、文件夹</p>
+<p>rm file &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;123.txt<br>将会删除 &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;123.txt文件</p>
+<p>八、重启玩客云</p>
+<p>使用命令reboot 重启一次系统，如果&#x2F;mnt&#x2F;diskyingpan目录下有一个lost+found目录说明挂载成功，那么挂载USB硬盘的工作就顺利完成。瓿伞 </p>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2023/09/23/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%88%B7casaos%E5%9B%BE%E6%96%87/" rel="next" title="玩客云刷casaos图文"><i class="fas fa-angle-left"></i><span class="nav-title">玩客云刷casaos图文</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2023/09/23/%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6/" rel="prev" title="查看系统硬件"><span class="nav-title">查看系统硬件</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="LI BAO">
+  
+  <h1 class="author-name">LI BAO</h1>
+  <h2 class="author-description">免费博客不定时更新！！！！！</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">34</a></div>
+    </div>
+    
+    
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#%E4%BE%8B-%EF%BC%9A%E5%9C%A8%E6%A1%8C-%E4%B8%8B-%E5%88%9B%E5%BB%BA%E4%BB%A5%E2%80%9Cdemo%E2%80%9D%E5%91%BD%E5%90%8D%E7%9A%84-%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%BB%99-%E4%BB%B6%E5%A4%B9%E8%B5%8B%E6%9D%83%E9%99%90%EF%BC%8C%E6%9D%83%E9%99%90%E4%B8%BA123%E3%80%82mkdir-123-%E6%A1%8C%E9%9D%A2-demo"><span class="toc-text">例?：在桌?下?创建以“demo”命名的?件夹，并且给?件夹赋权限，权限为123。mkdir  123  桌面&#x2F;demo</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#ln-s-mnt-libao2-www-www-%E8%BD%AF%E8%BF%9E%E6%88%91%E7%9A%84%E5%BA%94%E8%AF%A5%E6%98%AFcd-mnt-libao2-%E4%B8%8A%E9%9D%A2%E5%8E%BBlibao2%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E9%9D%A2%E5%8E%BBlibao3%E6%96%87%E4%BB%B6%E5%A4%B9cd-mnt-libao2-libao3-%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E8%BD%AF%E9%93%BE-ln-%E2%80%93s-mnt-libao2-www-wwww-%E8%AF%B4%E6%98%8E%EF%BC%9A%E5%8D%B3%E5%9C%A8-mnt-libao2-www-%E5%9C%A8%E6%A0%B9%E5%BD%95%E4%B8%8B%E5%BB%BA%E4%B8%80%E4%B8%AAwww%E7%9A%84%E5%BF%AB%E6%8D%B7-%E5%BC%8F-rm-%E2%80%93rf-www%E8%AF%B4%E6%98%8E%EF%BC%9A%E5%88%A0%E9%99%A4%E8%BD%AF%E8%BF%9E%E6%8E%A5-rm-%E2%80%93rf-www-%E8%AF%B4%E6%98%8E%EF%BC%9A%E5%88%A0%E9%99%A4www%E5%BD%95%E4%B8%8B%E7%9A%84-%E4%BB%B6"><span class="toc-text">ln-s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;www 软连我的应该是cd &#x2F;mnt&#x2F;libao2&#x2F;上面去libao2文件夹下面去libao3文件夹cd &#x2F;mnt&#x2F;libao2&#x2F;libao3&#x2F;创建和删软链#ln –s &#x2F;mnt&#x2F;libao2&#x2F;www&#x2F; &#x2F;wwww&#x2F;&#x2F;说明：即在&#x2F;mnt&#x2F;libao2&#x2F;www&#x2F;在根录下建一个www的快捷?式#rm –rf www说明：删除软连接++++++++++++++++++++++++++++++++#rm –rf www&#x2F;说明：删除www录下的?件</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#%E5%88%A0%E9%99%A4%E4%BB%B6%E5%A4%B9%E3%80%90rm%E3%80%91"><span class="toc-text">删除件夹【rm】</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:lifuaini@proton.me" target="_blank">电子邮箱</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">微博</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.google.com/" target="_blank">谷歌</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://baidu.com/" target="_blank">百度</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.tencent.com/" target="_blank">腾讯</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://www.youtube.com/" target="_blank">优兔视频</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://hz.lifu.eu.org//" target="_blank">化州志</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">LI BAO</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
